@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inception Emails | AI-Powered Cold Email Outreach That Delivers Qualified Leads</title>
+    <meta name="description" content="Get qualified decision-makers on your calendar without spending a fortune on ads. AI-powered email outreach with 11% reply rates and $15-40 cost per lead.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+            --gold-dim: rgba(212, 175, 55, 0.15);
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --gray: #999;
+            --dark-gray: #1a1a1a;
+            --card-bg: #111111;
+            --section-alt: #0E0E0E;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black) !important;
+            padding: 0.6rem 1.4rem;
+            font-weight: 700 !important;
+            font-size: 0.8rem !important;
+            letter-spacing: 0.1em !important;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: #e6c04a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            padding: 1rem 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #e6c04a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--gold-glow);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            padding: 1rem 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold-dim);
+            transform: translateY(-2px);
+        }
+
+        /* SECTION SHARED */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--section-alt);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--gray);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold-dim);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.08;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .gold {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 580px;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        /* METRICS BAR */
+        .metrics-bar {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            text-align: left;
+        }
+
+        .metric-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.3rem;
+        }
+
+        /* COST COMPARISON */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .comparison-card.highlight {
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .comparison-card.highlight::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--black);
+            padding: 0.3rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            border-radius: 50px;
+        }
+
+        .comparison-card .channel-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-card .price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .comparison-card.highlight .price {
+            color: var(--gold);
+        }
+
+        .comparison-card .price-note {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .comparison-card .savings {
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* HOW IT WORKS */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .step-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--gold-dim);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* INDUSTRIES */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .industry-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .industry-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .industry-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .industry-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .industry-card p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .industry-stat {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .author-title {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            text-align: center;
+            padding: 7rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-section .section-title {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .section-subtitle {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-section .gold-line {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-guarantees {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-guarantee {
+            font-size: 0.85rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-guarantee .check {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--card-bg);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hero {
+                padding-top: 100px;
+                min-height: auto;
+                padding-bottom: 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-sub {
+                font-size: 1.05rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                text-align: center;
+                width: 100%;
+            }
+
+            .metrics-bar {
+                gap: 2rem;
+            }
+
+            .metric-value {
+                font-size: 1.8rem;
+            }
+
+            .comparison-grid,
+            .industries-grid,
+            .testimonials-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="logo">INCEPTION <span>EMAILS</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#how-it-works" onclick="closeNav()">Process</a></li>
+            <li><a href="#comparison" onclick="closeNav()">Pricing</a></li>
+            <li><a href="#industries" onclick="closeNav()">Industries</a></li>
+            <li><a href="#testimonials" onclick="closeNav()">Results</a></li>
+            <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" class="nav-cta">Book a Call</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">AI-Powered Lead Generation</div>
+            <h1>Qualified Leads<br>On Your Calendar.<br><span class="gold">No Ads Required.</span></h1>
+            <p class="hero-sub">Our AI-powered email outreach delivers decision-makers straight to your calendar at a fraction of the cost of traditional advertising.</p>
+            <div class="hero-buttons">
+                <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Free Strategy Call</a>
+                <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+            </div>
+            <div class="metrics-bar">
+                <div class="metric">
+                    <div class="metric-value">50M+</div>
+                    <div class="metric-label">Emails Delivered</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">11%</div>
+                    <div class="metric-label">Avg Reply Rate</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">340%</div>
+                    <div class="metric-label">Average Client ROI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COST COMPARISON -->
+    <section class="section section-alt" id="comparison">
+        <div class="container fade-in">
+            <div class="section-label">Cost Comparison</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Stop Overpaying for Leads</h2>
+            <p class="section-subtitle">See how AI-powered outreach stacks up against traditional paid advertising channels.</p>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="channel-icon">&#x1F50D;</div>
+                    <h3>Google Ads</h3>
+                    <div class="price">$150 - $300</div>
+                    <div class="price-note">Per Qualified Lead</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="channel-icon">&#x1F4F1;</div>
+                    <h3>Meta / Facebook</h3>
+                    <div class="price">$80 - $200</div>
+                    <div class="price-note">Per Qualified Lead</div>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="channel-icon">&#x2709;</div>
+                    <h3>Inception Emails</h3>
+                    <div class="price">$15 - $40</div>
+                    <div class="price-note">Per Qualified Lead</div>
+                    <div class="savings">Save up to 90% per lead</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+        <div class="container fade-in">
+            <div class="section-label">Our Process</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">A four-step AI engine that turns cold prospects into booked meetings on your calendar.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>AI Research</h3>
+                    <p>Our AI analyzes prospect data across firmographic, technographic, and behavioral dimensions to build a precision-targeted list of ideal buyers.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Personalized Outreach</h3>
+                    <p>Every email is crafted individually using AI. No templates, no mail-merge. Each message speaks directly to the prospect's specific situation and pain points.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Lead Delivery</h3>
+                    <p>Interested prospects are qualified through intelligent conversation and booked directly onto your calendar. You only talk to people ready to buy.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h3>Optimization</h3>
+                    <p>Real-time AI learning continuously refines targeting, messaging, and timing. Your campaigns get smarter and more effective every single day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="section section-alt" id="industries">
+        <div class="container fade-in">
+            <div class="section-label">Industries We Serve</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Built for B2B Growth</h2>
+            <p class="section-subtitle">We specialize in verticals where decision-makers respond to direct, personalized outreach.</p>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">&#x1F5A5;</div>
+                    <h3>Managed Service Providers</h3>
+                    <p>Connect with IT directors and business owners actively looking for reliable managed IT support. We target companies with 20-500 employees in your service area.</p>
+                    <div class="industry-stat">Avg 14% reply rate for MSP campaigns</div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">&#x2695;</div>
+                    <h3>Functional Medicine</h3>
+                    <p>Reach health-conscious individuals and practitioners seeking integrative care solutions. Our AI identifies prospects based on health interests and demographics.</p>
+                    <div class="industry-stat">Avg 9% reply rate for health campaigns</div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">&#x1F3E2;</div>
+                    <h3>Property Maintenance</h3>
+                    <p>Target property managers, HOAs, and facility directors who need reliable maintenance services. We reach decision-makers across commercial and residential portfolios.</p>
+                    <div class="industry-stat">Avg 12% reply rate for property campaigns</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials">
+        <div class="container fade-in">
+            <div class="section-label">Client Results</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Real results from real businesses using AI-powered outreach.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">We went from chasing leads on LinkedIn to having 15-20 qualified meetings per month show up on our calendar. The consistency is what sold us. No more feast-or-famine cycles.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DR</div>
+                        <div>
+                            <div class="author-name">David Rodriguez</div>
+                            <div class="author-title">MSP Owner, Chicago</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">Patient acquisition was our biggest challenge. Within 60 days of starting, we had a full schedule and a waitlist. The AI personalization makes every outreach feel genuine and warm.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ST</div>
+                        <div>
+                            <div class="author-name">Dr. Sarah Thompson</div>
+                            <div class="author-title">Functional Medicine, Austin</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">We scaled from 12 to 45 commercial accounts in six months. The leads are pre-qualified so our team only meets with property managers who are actually ready to switch providers.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div>
+                            <div class="author-name">Maria Rodriguez</div>
+                            <div class="author-title">Property Maintenance, Miami</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section section-alt">
+        <div class="container fade-in">
+            <div class="section-label">Get Started</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Ready to Fill Your Calendar<br>With <span style="color: var(--gold);">Qualified Leads?</span></h2>
+            <p class="section-subtitle">Book a free strategy call and we will show you exactly how many qualified leads we can deliver for your business each month.</p>
+            <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Free Strategy Call</a>
+            <div class="cta-guarantees">
+                <div class="cta-guarantee"><span class="check">&#10003;</span> No commitment required</div>
+                <div class="cta-guarantee"><span class="check">&#10003;</span> Custom lead projections</div>
+                <div class="cta-guarantee"><span class="check">&#10003;</span> 30-minute consultation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">INCEPTION <span>EMAILS</span></a>
+                <p>AI-Powered Cold Email Outreach</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#how-it-works">Process</a></li>
+                <li><a href="#comparison">Pricing</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#testimonials">Results</a></li>
+                <li><a href="https://calendly.com/kashikeefe/30min" target="_blank">Book a Call</a></li>
+            </ul>
+            <div class="footer-copy">&copy; 2026 Inception Emails. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function closeNav() {
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
