@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSP Lead Generation | Inception Emails - AI-Powered Outreach for Managed Service Providers</title>
+    <meta name="description" content="Stop chasing IT leads. We deliver qualified MSP prospects directly to your calendar using AI-powered hyper-personalized outreach at $15-40 per lead.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+            --gold-dim: rgba(212, 175, 55, 0.15);
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --gray: #999;
+            --dark-gray: #1a1a1a;
+            --card-bg: #111111;
+            --section-alt: #0E0E0E;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 0.15em; color: var(--white); text-decoration: none; }
+        .logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta { background: var(--gold); color: var(--black) !important; padding: 0.6rem 1.4rem; font-weight: 700 !important; font-size: 0.8rem !important; letter-spacing: 0.1em !important; text-transform: uppercase; border-radius: 4px; transition: all 0.3s; }
+        .nav-cta:hover { background: #e6c04a; transform: translateY(-1px); box-shadow: 0 4px 20px var(--gold-glow); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
+
+        /* BUTTONS */
+        .btn-primary { display: inline-block; background: var(--gold); color: var(--black); padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: all 0.3s; border: none; cursor: pointer; }
+        .btn-primary:hover { background: #e6c04a; transform: translateY(-2px); box-shadow: 0 6px 30px var(--gold-glow); }
+        .btn-secondary { display: inline-block; background: transparent; color: var(--gold); padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 4px; border: 2px solid var(--gold); transition: all 0.3s; cursor: pointer; }
+        .btn-secondary:hover { background: var(--gold-dim); transform: translateY(-2px); }
+
+        /* SECTION SHARED */
+        .section { padding: 6rem 2rem; }
+        .section-alt { background: var(--section-alt); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+        .section-title { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; }
+        .section-subtitle { font-size: 1.15rem; color: var(--gray); max-width: 600px; line-height: 1.7; }
+        .gold-line { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2rem; }
+
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -30%; width: 800px; height: 800px; background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%); pointer-events: none; }
+        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 2rem; position: relative; z-index: 1; }
+        .hero-badge { display: inline-block; background: var(--gold-dim); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--gold); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+        .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.08; max-width: 800px; margin-bottom: 1.5rem; }
+        .hero h1 .gold { color: var(--gold); }
+        .hero-sub { font-size: 1.25rem; color: var(--gray); max-width: 620px; line-height: 1.7; margin-bottom: 2.5rem; }
+        .hero-buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 4rem; }
+
+        /* STATS GRID */
+        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; }
+        .stat-value { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 0.85rem; color: var(--gray); line-height: 1.4; }
+
+        /* COMPARISON */
+        .comparison-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .comparison-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; transition: all 0.3s; position: relative; }
+        .comparison-card.highlight { border-color: var(--gold); box-shadow: 0 0 40px rgba(212, 175, 55, 0.1); }
+        .comparison-card.highlight::before { content: 'BEST VALUE'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); padding: 0.3rem 1rem; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; border-radius: 50px; }
+        .comparison-card .channel-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .comparison-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
+        .comparison-card .price { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.3rem; }
+        .comparison-card.highlight .price { color: var(--gold); }
+        .comparison-card .price-note { font-size: 0.85rem; color: var(--gray); }
+        .comparison-card .savings { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem; color: var(--gold); font-weight: 600; }
+
+        /* PERFORMANCE */
+        .performance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .perf-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; }
+        .perf-value { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
+        .perf-label { font-size: 1rem; color: var(--gray); }
+
+        /* CHALLENGES */
+        .challenges-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .challenge-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; }
+        .challenge-card:hover { border-color: rgba(212, 175, 55, 0.3); transform: translateY(-4px); }
+        .challenge-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .challenge-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .challenge-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+
+        /* WHY LIST */
+        .why-list { margin-top: 2rem; max-width: 700px; }
+        .why-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .why-item:last-child { border-bottom: none; }
+        .why-check { color: var(--gold); font-size: 1.2rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+        .why-item p { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+        /* ROI */
+        .roi-flow { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; margin-bottom: 2rem; }
+        .roi-step { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.5rem 1.2rem; text-align: center; min-width: 140px; }
+        .roi-step .roi-val { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+        .roi-step .roi-lbl { font-size: 0.8rem; color: var(--gray); margin-top: 0.3rem; }
+        .roi-arrow { font-size: 1.5rem; color: var(--gold); }
+        .roi-result { background: var(--gold); color: var(--black); border-radius: 12px; padding: 2rem; text-align: center; max-width: 500px; margin: 0 auto; }
+        .roi-result .roi-val { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 900; }
+        .roi-result .roi-lbl { font-size: 1rem; font-weight: 600; margin-top: 0.3rem; }
+
+        /* COVERAGE */
+        .coverage-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+        .coverage-tag { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.85rem; color: var(--gray); }
+
+        /* CASE STUDIES */
+        .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .case-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem; position: relative; }
+        .case-card::before { content: '\201C'; font-family: 'Montserrat', sans-serif; font-size: 4rem; color: var(--gold); opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; line-height: 1; }
+        .case-card .result-highlight { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--gold); margin-bottom: 1rem; }
+        .case-card p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+        .case-author { display: flex; align-items: center; gap: 1rem; }
+        .case-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-dim); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--gold); flex-shrink: 0; }
+        .case-name { font-weight: 700; font-size: 0.95rem; }
+        .case-title { font-size: 0.8rem; color: var(--gray); }
+
+        /* CTA SECTION */
+        .cta-section { text-align: center; padding: 7rem 2rem; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%); pointer-events: none; }
+        .cta-section .section-title { max-width: 700px; margin-left: auto; margin-right: auto; }
+        .cta-section .section-subtitle { max-width: 500px; margin-left: auto; margin-right: auto; margin-bottom: 2.5rem; }
+        .cta-section .gold-line { margin-left: auto; margin-right: auto; }
+        .cta-guarantees { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+        .cta-guarantee { font-size: 0.85rem; color: var(--gray); display: flex; align-items: center; gap: 0.5rem; }
+        .cta-guarantee .check { color: var(--gold); font-weight: 700; }
+
+        /* BACK LINK */
+        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); text-decoration: none; font-size: 0.9rem; font-weight: 600; margin-bottom: 2rem; transition: opacity 0.3s; }
+        .back-link:hover { opacity: 0.8; }
+
+        /* FOOTER */
+        footer { background: var(--card-bg); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .footer-brand .logo { font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
+        .footer-brand p { font-size: 0.85rem; color: var(--gray); }
+        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); width: 100%; text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+
+        /* ANIMATIONS */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
+            .stats-grid, .challenges-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 10, 0.98); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.1rem; }
+            .hamburger { display: flex; z-index: 1001; }
+            .hero { padding-top: 100px; min-height: auto; padding-bottom: 4rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-sub { font-size: 1.05rem; }
+            .hero-buttons { flex-direction: column; gap: 1rem; }
+            .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+            .stats-grid, .challenges-grid { grid-template-columns: 1fr 1fr; }
+            .comparison-grid, .performance-grid, .cases-grid { grid-template-columns: 1fr; }
+            .section { padding: 4rem 1.5rem; }
+            .section-title { font-size: 1.8rem; }
+            .roi-flow { flex-direction: column; }
+            .roi-arrow { transform: rotate(90deg); }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/" onclick="closeNav()">Home</a></li>
+            <li><a href="/msp.html" onclick="closeNav()">MSPs</a></li>
+            <li><a href="/functional-medicine.html" onclick="closeNav()">Functional Medicine</a></li>
+            <li><a href="/property-maintenance.html" onclick="closeNav()">Property Maintenance</a></li>
+            <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" class="nav-cta">Book a Call</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <a href="/" class="back-link">&#8592; Back to Home</a>
+            <div class="hero-badge">MSP Lead Generation</div>
+            <h1>Stop Chasing IT Leads.<br><span class="gold">Let Them Come to You.</span></h1>
+            <p class="hero-sub">We deliver qualified MSP prospects directly to your calendar using AI-powered hyper-personalized outreach — at a fraction of what you're paying Google.</p>
+            <div class="hero-buttons">
+                <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Strategy Call</a>
+                <a href="#roi" class="btn-secondary">See the ROI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET STATS -->
+    <section class="section section-alt">
+        <div class="container fade-in">
+            <div class="section-label">Market Opportunity</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">The MSP Market Is Massive</h2>
+            <p class="section-subtitle">And most MSPs are leaving money on the table with outdated lead generation methods.</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">40,000+</div>
+                    <div class="stat-label">US Businesses</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$120B</div>
+                    <div class="stat-label">Market Size</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$1.2M-$5M</div>
+                    <div class="stat-label">Avg Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$15K-$50K</div>
+                    <div class="stat-label">Client LTV</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$2,000/mo</div>
+                    <div class="stat-label">Avg Deal Size</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COST COMPARISON -->
+    <section class="section">
+        <div class="container fade-in">
+            <div class="section-label">Cost Comparison</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Stop Overpaying for MSP Leads</h2>
+            <p class="section-subtitle">See how AI-powered outreach stacks up against traditional paid advertising channels.</p>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="channel-icon">&#x1F50D;</div>
+                    <h3>Google Ads</h3>
+                    <div class="price">$150 - $300</div>
+                    <div class="price-note">Per Qualified Lead</div>
+                </div>
+                <div class="comparison-card">
+                    <div class="channel-icon">&#x1F4F1;</div>
+                    <h3>Meta / Facebook</h3>
+                    <div class="price">$80 - $200</div>
+                    <div class="price-note">Per Qualified Lead</div>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="channel-icon">&#x2709;</div>
+                    <h3>Inception Emails</h3>
+                    <div class="price">$15 - $40</div>
+                    <div class="price-note">Per Qualified Lead</div>
+                    <div class="savings">Save up to 90% per lead</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFORMANCE -->
+    <section class="section section-alt">
+        <div class="container fade-in">
+            <div class="section-label">Performance Metrics</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Proven Results for MSPs</h2>
+            <p class="section-subtitle">Industry-leading email performance that consistently delivers qualified meetings.</p>
+            <div class="performance-grid">
+                <div class="perf-card">
+                    <div class="perf-value">45-55%</div>
+                    <div class="perf-label">Open Rate</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-value">8-12%</div>
+                    <div class="perf-label">Reply Rate</div>
+                </div>
+                <div class="perf-card">
+                    <div class="perf-value">3-5%</div>
+                    <div class="perf-label">Meeting Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHALLENGES -->
+    <section class="section">
+        <div class="container fade-in">
+            <div class="section-label">Industry Challenges</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">The 5 Biggest MSP Growth Killers</h2>
+            <p class="section-subtitle">Sound familiar? These challenges keep most MSPs stuck at the same revenue level year after year.</p>
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">&#x1F465;</div>
+                    <h3>Standing Out</h3>
+                    <p>In a crowded MSP market, prospects can't tell providers apart.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">&#x1F4C9;</div>
+                    <h3>Ineffective Marketing</h3>
+                    <p>Generic campaigns fail to resonate with IT decision-makers.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">&#x23F3;</div>
+                    <h3>Long Sales Cycles</h3>
+                    <p>B2B IT decisions take months, draining time and resources.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">&#x1F4DA;</div>
+                    <h3>Lack of Expertise</h3>
+                    <p>IT pros aren't marketers — and shouldn't have to be.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="challenge-icon">&#x1F4B8;</div>
+                    <h3>High Ad Costs</h3>
+                    <p>Google and Meta ads burn budgets with diminishing returns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY COLD EMAIL -->
+    <section class="section section-alt">
+        <div class="container fade-in">
+            <div class="section-label">Why Cold Email Wins</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">The Unfair Advantage for MSPs</h2>
+            <p class="section-subtitle">Cold email outperforms every other channel for MSP lead generation. Here's why.</p>
+            <div class="why-list">
+                <div class="why-item">
+                    <span class="why-check">&#10003;</span>
+                    <p><strong>Direct access to CTOs and CIOs</strong> — Skip the gatekeepers and land directly in the inbox of IT decision-makers who control the budget.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-check">&#10003;</span>
+                    <p><strong>Personalized by tech stack</strong> — Our AI tailors every email based on the prospect's actual technology environment, pain points, and business needs.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-check">&#10003;</span>
+                    <p><strong>5-10x cheaper than ads</strong> — Why pay $200+ per lead on Google when you can get the same quality meetings for $15-40?</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-check">&#10003;</span>
+                    <p><strong>Predictable pipeline</strong> — No more feast-or-famine. Get a consistent flow of qualified meetings every single month.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-check">&#10003;</span>
+                    <p><strong>AI optimization</strong> — Machine learning continuously improves targeting, messaging, and timing for ever-increasing conversion rates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI PROJECTION -->
+    <section class="section" id="roi">
+        <div class="container fade-in">
+            <div class="section-label">ROI Projection</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">The Math Speaks for Itself</h2>
+            <p class="section-subtitle">Here's what a typical MSP campaign looks like over 12 months.</p>
+            <div class="roi-flow">
+                <div class="roi-step">
+                    <div class="roi-val">$3K/mo</div>
+                    <div class="roi-lbl">Investment</div>
+                </div>
+                <div class="roi-arrow">&#8594;</div>
+                <div class="roi-step">
+                    <div class="roi-val">100</div>
+                    <div class="roi-lbl">Responses</div>
+                </div>
+                <div class="roi-arrow">&#8594;</div>
+                <div class="roi-step">
+                    <div class="roi-val">4</div>
+                    <div class="roi-lbl">Meetings</div>
+                </div>
+                <div class="roi-arrow">&#8594;</div>
+                <div class="roi-step">
+                    <div class="roi-val">1</div>
+                    <div class="roi-lbl">Client/Month</div>
+                </div>
+            </div>
+            <div class="roi-result">
+                <div class="roi-val">1,100% ROI</div>
+                <div class="roi-lbl">$24K/yr per client acquired at $3K/mo investment</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COVERAGE -->
+    <section class="section section-alt">
+        <div class="container fade-in">
+            <div class="section-label">Coverage Area</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Nationwide MSP Prospecting</h2>
+            <p class="section-subtitle">We target MSP prospects across the highest-density markets in the United States.</p>
+            <div class="coverage-tags">
+                <span class="coverage-tag">California</span>
+                <span class="coverage-tag">Texas</span>
+                <span class="coverage-tag">Florida</span>
+                <span class="coverage-tag">New York</span>
+                <span class="coverage-tag">Virginia</span>
+                <span class="coverage-tag">Illinois</span>
+                <span class="coverage-tag">Pennsylvania</span>
+                <span class="coverage-tag">Ohio</span>
+                <span class="coverage-tag">Georgia</span>
+                <span class="coverage-tag">North Carolina</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="section">
+        <div class="container fade-in">
+            <div class="section-label">Case Studies</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Real MSPs. Real Results.</h2>
+            <p class="section-subtitle">See how managed service providers are scaling with Inception Emails.</p>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="result-highlight">8 Meetings, 2 Clients, $4,500 MRR</div>
+                    <p>In just 3 months, Mark landed 8 qualified meetings and closed 2 new managed services contracts worth $4,500 in monthly recurring revenue.</p>
+                    <div class="case-author">
+                        <div class="case-avatar">MJ</div>
+                        <div>
+                            <div class="case-name">Mark Johnson</div>
+                            <div class="case-title">MSP Owner, Austin TX</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="result-highlight">$250K Pipeline in 6 Months</div>
+                    <p>Sarah built a $250K pipeline of qualified MSP opportunities in just 6 months, transforming her business development process entirely.</p>
+                    <div class="case-author">
+                        <div class="case-avatar">SC</div>
+                        <div>
+                            <div class="case-name">Sarah Chen</div>
+                            <div class="case-title">MSP Director, Miami FL</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="result-highlight">3 Contracts, 75% Less Ad Spend</div>
+                    <p>David signed 3 new contracts at $3K/month each while cutting his advertising budget by 75%. Cold email replaced his entire paid strategy.</p>
+                    <div class="case-author">
+                        <div class="case-avatar">DR</div>
+                        <div>
+                            <div class="case-name">David Rodriguez</div>
+                            <div class="case-title">MSP Owner, Chicago IL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section section-alt">
+        <div class="container fade-in">
+            <div class="section-label">Get Started</div>
+            <div class="gold-line"></div>
+            <h2 class="section-title">Ready to Scale Your<br><span style="color: var(--gold);">MSP Business?</span></h2>
+            <p class="section-subtitle">Book a free strategy call and we'll show you exactly how many qualified IT leads we can deliver each month.</p>
+            <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Strategy Call</a>
+            <div class="cta-guarantees">
+                <div class="cta-guarantee"><span class="check">&#10003;</span> No commitment required</div>
+                <div class="cta-guarantee"><span class="check">&#10003;</span> Custom lead projections</div>
+                <div class="cta-guarantee"><span class="check">&#10003;</span> 30-minute consultation</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
+                <p>AI-Powered Cold Email Outreach</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/msp.html">MSPs</a></li>
+                <li><a href="/functional-medicine.html">Functional Medicine</a></li>
+                <li><a href="/property-maintenance.html">Property Maintenance</a></li>
+                <li><a href="https://calendly.com/kashikeefe/30min" target="_blank">Book a Call</a></li>
+            </ul>
+            <div class="footer-copy">&copy; 2026 Inception Emails. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+        function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
