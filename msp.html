@@ -7,193 +7,1006 @@
     <meta name="description" content="Stop chasing IT leads. We deliver qualified MSP prospects directly to your calendar using AI-powered hyper-personalized outreach at $15-40 per lead.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --black: #0A0A0A;
-            --white: #FFFFFF;
-            --gold: #D4AF37;
-            --gold-dim: rgba(212, 175, 55, 0.15);
-            --gold-glow: rgba(212, 175, 55, 0.4);
-            --gray: #999;
-            --dark-gray: #1a1a1a;
-            --card-bg: #111111;
-            --section-alt: #0E0E0E;
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        html { scroll-behavior: smooth; }
+        :root {
+            --bg: #080808;
+            --gold: #C9A84C;
+            --gold-dim: rgba(201, 168, 76, 0.12);
+            --gold-glow: rgba(201, 168, 76, 0.35);
+            --text: #D4D4D4;
+            --muted: #777;
+            --faint: #444;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
+            font-weight: 300;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: var(--white);
+        }
 
-        /* NAV */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* -- NAV -- */
         nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.6rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
         }
-        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 800; letter-spacing: 0.15em; color: var(--white); text-decoration: none; }
-        .logo span { color: var(--gold); }
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--gold); }
-        .nav-cta { background: var(--gold); color: var(--black) !important; padding: 0.6rem 1.4rem; font-weight: 700 !important; font-size: 0.8rem !important; letter-spacing: 0.1em !important; text-transform: uppercase; border-radius: 4px; transition: all 0.3s; }
-        .nav-cta:hover { background: #e6c04a; transform: translateY(-1px); box-shadow: 0 4px 20px var(--gold-glow); }
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-        .hamburger span { width: 24px; height: 2px; background: var(--white); transition: all 0.3s; }
 
-        /* BUTTONS */
-        .btn-primary { display: inline-block; background: var(--gold); color: var(--black); padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: all 0.3s; border: none; cursor: pointer; }
-        .btn-primary:hover { background: #e6c04a; transform: translateY(-2px); box-shadow: 0 6px 30px var(--gold-glow); }
-        .btn-secondary { display: inline-block; background: transparent; color: var(--gold); padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border-radius: 4px; border: 2px solid var(--gold); transition: all 0.3s; cursor: pointer; }
-        .btn-secondary:hover { background: var(--gold-dim); transform: translateY(-2px); }
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--white);
+        }
 
-        /* SECTION SHARED */
-        .section { padding: 6rem 2rem; }
-        .section-alt { background: var(--section-alt); }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-        .section-title { font-size: 2.8rem; font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; }
-        .section-subtitle { font-size: 1.15rem; color: var(--gray); max-width: 600px; line-height: 1.7; }
-        .gold-line { width: 60px; height: 3px; background: var(--gold); margin-bottom: 2rem; }
+        .logo span {
+            color: var(--gold);
+        }
 
-        /* HERO */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -30%; width: 800px; height: 800px; background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%); pointer-events: none; }
-        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 2rem; position: relative; z-index: 1; }
-        .hero-badge { display: inline-block; background: var(--gold-dim); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--gold); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
-        .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.08; max-width: 800px; margin-bottom: 1.5rem; }
-        .hero h1 .gold { color: var(--gold); }
-        .hero-sub { font-size: 1.25rem; color: var(--gray); max-width: 620px; line-height: 1.7; margin-bottom: 2.5rem; }
-        .hero-buttons { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 4rem; }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
 
-        /* STATS GRID */
-        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .stat-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; }
-        .stat-value { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
-        .stat-label { font-size: 0.85rem; color: var(--gray); line-height: 1.4; }
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.4s;
+        }
 
-        /* COMPARISON */
-        .comparison-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-        .comparison-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; transition: all 0.3s; position: relative; }
-        .comparison-card.highlight { border-color: var(--gold); box-shadow: 0 0 40px rgba(212, 175, 55, 0.1); }
-        .comparison-card.highlight::before { content: 'BEST VALUE'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); padding: 0.3rem 1rem; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; border-radius: 50px; }
-        .comparison-card .channel-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .comparison-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; }
-        .comparison-card .price { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 0.3rem; }
-        .comparison-card.highlight .price { color: var(--gold); }
-        .comparison-card .price-note { font-size: 0.85rem; color: var(--gray); }
-        .comparison-card .savings { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem; color: var(--gold); font-weight: 600; }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
 
-        /* PERFORMANCE */
-        .performance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-        .perf-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem 2rem; text-align: center; }
-        .perf-value { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--gold); margin-bottom: 0.5rem; }
-        .perf-label { font-size: 1rem; color: var(--gray); }
+        .nav-cta {
+            color: var(--gold) !important;
+            padding: 0.6rem 1.6rem;
+            border: 1px solid var(--gold);
+            transition: all 0.4s !important;
+        }
 
-        /* CHALLENGES */
-        .challenges-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .challenge-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; }
-        .challenge-card:hover { border-color: rgba(212, 175, 55, 0.3); transform: translateY(-4px); }
-        .challenge-icon { font-size: 2rem; margin-bottom: 1rem; }
-        .challenge-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .challenge-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--bg) !important;
+        }
 
-        /* WHY LIST */
-        .why-list { margin-top: 2rem; max-width: 700px; }
-        .why-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .why-item:last-child { border-bottom: none; }
-        .why-check { color: var(--gold); font-size: 1.2rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
-        .why-item p { font-size: 1rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
 
-        /* ROI */
-        .roi-flow { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; margin-bottom: 2rem; }
-        .roi-step { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.5rem 1.2rem; text-align: center; min-width: 140px; }
-        .roi-step .roi-val { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--gold); }
-        .roi-step .roi-lbl { font-size: 0.8rem; color: var(--gray); margin-top: 0.3rem; }
-        .roi-arrow { font-size: 1.5rem; color: var(--gold); }
-        .roi-result { background: var(--gold); color: var(--black); border-radius: 12px; padding: 2rem; text-align: center; max-width: 500px; margin: 0 auto; }
-        .roi-result .roi-val { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 900; }
-        .roi-result .roi-lbl { font-size: 1rem; font-weight: 600; margin-top: 0.3rem; }
+        .hamburger span {
+            width: 22px;
+            height: 1px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
 
-        /* COVERAGE */
-        .coverage-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
-        .coverage-tag { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.85rem; color: var(--gray); }
+        /* -- BUTTONS -- */
+        .btn-primary {
+            display: inline-block;
+            color: var(--gold);
+            padding: 1rem 2.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
 
-        /* CASE STUDIES */
-        .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-        .case-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2.5rem; position: relative; }
-        .case-card::before { content: '\201C'; font-family: 'Montserrat', sans-serif; font-size: 4rem; color: var(--gold); opacity: 0.3; position: absolute; top: 1rem; left: 1.5rem; line-height: 1; }
-        .case-card .result-highlight { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--gold); margin-bottom: 1rem; }
-        .case-card p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 1.5rem; position: relative; z-index: 1; }
-        .case-author { display: flex; align-items: center; gap: 1rem; }
-        .case-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-dim); display: flex; align-items: center; justify-content: center; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1rem; color: var(--gold); flex-shrink: 0; }
-        .case-name { font-weight: 700; font-size: 0.95rem; }
-        .case-title { font-size: 0.8rem; color: var(--gray); }
+        .btn-primary:hover {
+            background: var(--gold);
+            color: var(--bg);
+        }
 
-        /* CTA SECTION */
-        .cta-section { text-align: center; padding: 7rem 2rem; position: relative; overflow: hidden; }
-        .cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%); pointer-events: none; }
-        .cta-section .section-title { max-width: 700px; margin-left: auto; margin-right: auto; }
-        .cta-section .section-subtitle { max-width: 500px; margin-left: auto; margin-right: auto; margin-bottom: 2.5rem; }
-        .cta-section .gold-line { margin-left: auto; margin-right: auto; }
-        .cta-guarantees { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
-        .cta-guarantee { font-size: 0.85rem; color: var(--gray); display: flex; align-items: center; gap: 0.5rem; }
-        .cta-guarantee .check { color: var(--gold); font-weight: 700; }
+        .btn-secondary {
+            display: inline-block;
+            color: var(--muted);
+            padding: 1rem 2.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border: 1px solid var(--faint);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
 
-        /* BACK LINK */
-        .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); text-decoration: none; font-size: 0.9rem; font-weight: 600; margin-bottom: 2rem; transition: opacity 0.3s; }
-        .back-link:hover { opacity: 0.8; }
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
 
-        /* FOOTER */
-        footer { background: var(--card-bg); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-        .footer-brand .logo { font-size: 1.1rem; margin-bottom: 0.5rem; display: block; }
-        .footer-brand p { font-size: 0.85rem; color: var(--gray); }
-        .footer-links { display: flex; gap: 2rem; list-style: none; }
-        .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--gold); }
-        .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); width: 100%; text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        /* -- SECTION SHARED -- */
+        .section {
+            padding: 120px 2rem;
+        }
 
-        /* ANIMATIONS */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-        /* RESPONSIVE */
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--muted);
+            max-width: 560px;
+            line-height: 1.9;
+        }
+
+        .gold-line {
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 2.5rem;
+        }
+
+        /* -- BACK LINK -- */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            transition: opacity 0.4s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* -- HERO -- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--faint), transparent);
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            color: var(--gold);
+            padding: 0.5rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            max-width: 780px;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .hero h1 .gold {
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--muted);
+            max-width: 540px;
+            line-height: 1.9;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 5rem;
+        }
+
+        /* -- STATS GRID -- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-right: 1px solid var(--faint);
+        }
+
+        .stat-card:last-child {
+            border-right: none;
+        }
+
+        .stat-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* -- COMPARISON -- */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .comparison-card {
+            padding: 3rem 2.5rem;
+            text-align: center;
+            position: relative;
+            border-right: 1px solid var(--faint);
+        }
+
+        .comparison-card:last-child {
+            border-right: none;
+        }
+
+        .comparison-card.highlight {
+            background: rgba(201, 168, 76, 0.03);
+        }
+
+        .comparison-card.highlight::before {
+            content: 'Best Value';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            padding: 0.4rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .comparison-card .channel-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .comparison-card.highlight .price {
+            color: var(--gold);
+        }
+
+        .comparison-card .price-note {
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-card .savings {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--faint);
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* -- PERFORMANCE -- */
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .perf-card {
+            padding: 3rem 2.5rem;
+            text-align: center;
+            border-right: 1px solid var(--faint);
+        }
+
+        .perf-card:last-child {
+            border-right: none;
+        }
+
+        .perf-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .perf-label {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* -- CHALLENGES -- */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .challenge-card {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-right: 1px solid var(--faint);
+            transition: background 0.4s;
+        }
+
+        .challenge-card:last-child {
+            border-right: none;
+        }
+
+        .challenge-card:hover {
+            background: rgba(201, 168, 76, 0.03);
+        }
+
+        .challenge-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .challenge-card p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* -- WHY LIST -- */
+        .why-list {
+            margin-top: 3rem;
+            max-width: 700px;
+        }
+
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--faint);
+        }
+
+        .why-item:last-child {
+            border-bottom: none;
+        }
+
+        .why-check {
+            color: var(--gold);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 0.3rem;
+        }
+
+        .why-item p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .why-item p strong {
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        /* -- ROI -- */
+        .roi-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .roi-step {
+            padding: 2rem 2.5rem;
+            text-align: center;
+            border-right: 1px solid var(--faint);
+        }
+
+        .roi-step:last-child {
+            border-right: none;
+        }
+
+        .roi-step .roi-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1.2;
+        }
+
+        .roi-step .roi-lbl {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 0.4rem;
+        }
+
+        .roi-result {
+            border: 1px solid var(--gold);
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(201, 168, 76, 0.03);
+        }
+
+        .roi-result .roi-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 300;
+            color: var(--gold);
+        }
+
+        .roi-result .roi-lbl {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--muted);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* -- COVERAGE -- */
+        .coverage-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .coverage-tag {
+            border: 1px solid var(--faint);
+            padding: 0.6rem 1.4rem;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            transition: all 0.4s;
+        }
+
+        .coverage-tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* -- CASE STUDIES -- */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 4rem;
+        }
+
+        .case-card {
+            padding: 3rem 2.5rem;
+            border-right: 1px solid var(--faint);
+            position: relative;
+        }
+
+        .case-card:last-child {
+            border-right: none;
+        }
+
+        .case-quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            color: rgba(201, 168, 76, 0.15);
+            line-height: 1;
+            margin-bottom: -1rem;
+        }
+
+        .result-highlight {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .case-card p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .case-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .case-avatar {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--faint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .case-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: var(--white);
+        }
+
+        .case-title {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.15rem;
+        }
+
+        /* -- CTA SECTION -- */
+        .cta-section {
+            text-align: center;
+            padding: 140px 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .cta-section .section-label {
+            text-align: center;
+        }
+
+        .cta-section .section-title {
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .section-subtitle {
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
+        }
+
+        .cta-section .gold-line {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-guarantees {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-guarantee {
+            font-size: 0.75rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-guarantee .check {
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        /* -- DIVIDER -- */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--faint), transparent);
+        }
+
+        /* -- FOOTER -- */
+        footer {
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--faint);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-brand .logo {
+            font-size: 0.8rem;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            transition: color 0.4s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: var(--faint);
+            width: 100%;
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(68, 68, 68, 0.4);
+            letter-spacing: 0.05em;
+        }
+
+        /* -- ANIMATIONS -- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        /* -- RESPONSIVE -- */
         @media (max-width: 1024px) {
-            .hero h1 { font-size: 3rem; }
-            .section-title { font-size: 2.2rem; }
-            .stats-grid, .challenges-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.6rem;
+            }
+
+            .stats-grid,
+            .challenges-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .stats-grid .stat-card:nth-child(3) {
+                border-right: none;
+            }
+
+            .stats-grid .stat-card:nth-child(1),
+            .stats-grid .stat-card:nth-child(2),
+            .stats-grid .stat-card:nth-child(3) {
+                border-bottom: 1px solid var(--faint);
+            }
+
+            .challenges-grid .challenge-card:nth-child(3) {
+                border-right: none;
+            }
+
+            .challenges-grid .challenge-card:nth-child(1),
+            .challenges-grid .challenge-card:nth-child(2),
+            .challenges-grid .challenge-card:nth-child(3) {
+                border-bottom: 1px solid var(--faint);
+            }
         }
+
         @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10, 10, 10, 0.98); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
-            .nav-links.open { display: flex; }
-            .nav-links a { font-size: 1.1rem; }
-            .hamburger { display: flex; z-index: 1001; }
-            .hero { padding-top: 100px; min-height: auto; padding-bottom: 4rem; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero-sub { font-size: 1.05rem; }
-            .hero-buttons { flex-direction: column; gap: 1rem; }
-            .btn-primary, .btn-secondary { text-align: center; width: 100%; }
-            .stats-grid, .challenges-grid { grid-template-columns: 1fr 1fr; }
-            .comparison-grid, .performance-grid, .cases-grid { grid-template-columns: 1fr; }
-            .section { padding: 4rem 1.5rem; }
-            .section-title { font-size: 1.8rem; }
-            .roi-flow { flex-direction: column; }
-            .roi-arrow { transform: rotate(90deg); }
-            .footer-content { flex-direction: column; text-align: center; }
-            .footer-links { flex-wrap: wrap; justify-content: center; }
+            nav {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(8, 8, 8, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+                color: var(--text);
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hero {
+                padding-top: 100px;
+                min-height: auto;
+                padding-bottom: 5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                text-align: center;
+                width: 100%;
+            }
+
+            .stats-grid,
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card,
+            .challenge-card {
+                border-right: none;
+                border-bottom: 1px solid var(--faint);
+            }
+
+            .stat-card:last-child,
+            .challenge-card:last-child {
+                border-bottom: none;
+            }
+
+            .comparison-grid,
+            .performance-grid,
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-card,
+            .perf-card,
+            .case-card {
+                border-right: none;
+                border-bottom: 1px solid var(--faint);
+            }
+
+            .comparison-card:last-child,
+            .perf-card:last-child,
+            .case-card:last-child {
+                border-bottom: none;
+            }
+
+            .roi-flow {
+                flex-direction: column;
+            }
+
+            .roi-step {
+                border-right: none;
+                border-bottom: 1px solid var(--faint);
+                width: 100%;
+            }
+
+            .roi-step:last-child {
+                border-bottom: none;
+            }
+
+            .section {
+                padding: 80px 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-section {
+                padding: 100px 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -229,7 +1042,7 @@
     </section>
 
     <!-- MARKET STATS -->
-    <section class="section section-alt">
+    <section class="section">
         <div class="container fade-in">
             <div class="section-label">Market Opportunity</div>
             <div class="gold-line"></div>
@@ -260,6 +1073,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- COST COMPARISON -->
     <section class="section">
         <div class="container fade-in">
@@ -269,20 +1084,17 @@
             <p class="section-subtitle">See how AI-powered outreach stacks up against traditional paid advertising channels.</p>
             <div class="comparison-grid">
                 <div class="comparison-card">
-                    <div class="channel-icon">&#x1F50D;</div>
-                    <h3>Google Ads</h3>
+                    <div class="channel-name">Google Ads</div>
                     <div class="price">$150 - $300</div>
                     <div class="price-note">Per Qualified Lead</div>
                 </div>
                 <div class="comparison-card">
-                    <div class="channel-icon">&#x1F4F1;</div>
-                    <h3>Meta / Facebook</h3>
+                    <div class="channel-name">Meta / Facebook</div>
                     <div class="price">$80 - $200</div>
                     <div class="price-note">Per Qualified Lead</div>
                 </div>
                 <div class="comparison-card highlight">
-                    <div class="channel-icon">&#x2709;</div>
-                    <h3>Inception Emails</h3>
+                    <div class="channel-name">Inception Emails</div>
                     <div class="price">$15 - $40</div>
                     <div class="price-note">Per Qualified Lead</div>
                     <div class="savings">Save up to 90% per lead</div>
@@ -291,8 +1103,10 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- PERFORMANCE -->
-    <section class="section section-alt">
+    <section class="section">
         <div class="container fade-in">
             <div class="section-label">Performance Metrics</div>
             <div class="gold-line"></div>
@@ -315,6 +1129,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- CHALLENGES -->
     <section class="section">
         <div class="container fade-in">
@@ -324,27 +1140,22 @@
             <p class="section-subtitle">Sound familiar? These challenges keep most MSPs stuck at the same revenue level year after year.</p>
             <div class="challenges-grid">
                 <div class="challenge-card">
-                    <div class="challenge-icon">&#x1F465;</div>
                     <h3>Standing Out</h3>
                     <p>In a crowded MSP market, prospects can't tell providers apart.</p>
                 </div>
                 <div class="challenge-card">
-                    <div class="challenge-icon">&#x1F4C9;</div>
                     <h3>Ineffective Marketing</h3>
                     <p>Generic campaigns fail to resonate with IT decision-makers.</p>
                 </div>
                 <div class="challenge-card">
-                    <div class="challenge-icon">&#x23F3;</div>
                     <h3>Long Sales Cycles</h3>
                     <p>B2B IT decisions take months, draining time and resources.</p>
                 </div>
                 <div class="challenge-card">
-                    <div class="challenge-icon">&#x1F4DA;</div>
                     <h3>Lack of Expertise</h3>
                     <p>IT pros aren't marketers — and shouldn't have to be.</p>
                 </div>
                 <div class="challenge-card">
-                    <div class="challenge-icon">&#x1F4B8;</div>
                     <h3>High Ad Costs</h3>
                     <p>Google and Meta ads burn budgets with diminishing returns.</p>
                 </div>
@@ -352,8 +1163,10 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- WHY COLD EMAIL -->
-    <section class="section section-alt">
+    <section class="section">
         <div class="container fade-in">
             <div class="section-label">Why Cold Email Wins</div>
             <div class="gold-line"></div>
@@ -384,6 +1197,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- ROI PROJECTION -->
     <section class="section" id="roi">
         <div class="container fade-in">
@@ -396,17 +1211,14 @@
                     <div class="roi-val">$3K/mo</div>
                     <div class="roi-lbl">Investment</div>
                 </div>
-                <div class="roi-arrow">&#8594;</div>
                 <div class="roi-step">
                     <div class="roi-val">100</div>
                     <div class="roi-lbl">Responses</div>
                 </div>
-                <div class="roi-arrow">&#8594;</div>
                 <div class="roi-step">
                     <div class="roi-val">4</div>
                     <div class="roi-lbl">Meetings</div>
                 </div>
-                <div class="roi-arrow">&#8594;</div>
                 <div class="roi-step">
                     <div class="roi-val">1</div>
                     <div class="roi-lbl">Client/Month</div>
@@ -419,8 +1231,10 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- COVERAGE -->
-    <section class="section section-alt">
+    <section class="section">
         <div class="container fade-in">
             <div class="section-label">Coverage Area</div>
             <div class="gold-line"></div>
@@ -441,6 +1255,8 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- CASE STUDIES -->
     <section class="section">
         <div class="container fade-in">
@@ -450,6 +1266,7 @@
             <p class="section-subtitle">See how managed service providers are scaling with Inception Emails.</p>
             <div class="cases-grid">
                 <div class="case-card">
+                    <div class="case-quote-mark">&ldquo;</div>
                     <div class="result-highlight">8 Meetings, 2 Clients, $4,500 MRR</div>
                     <p>In just 3 months, Mark landed 8 qualified meetings and closed 2 new managed services contracts worth $4,500 in monthly recurring revenue.</p>
                     <div class="case-author">
@@ -461,6 +1278,7 @@
                     </div>
                 </div>
                 <div class="case-card">
+                    <div class="case-quote-mark">&ldquo;</div>
                     <div class="result-highlight">$250K Pipeline in 6 Months</div>
                     <p>Sarah built a $250K pipeline of qualified MSP opportunities in just 6 months, transforming her business development process entirely.</p>
                     <div class="case-author">
@@ -472,6 +1290,7 @@
                     </div>
                 </div>
                 <div class="case-card">
+                    <div class="case-quote-mark">&ldquo;</div>
                     <div class="result-highlight">3 Contracts, 75% Less Ad Spend</div>
                     <p>David signed 3 new contracts at $3K/month each while cutting his advertising budget by 75%. Cold email replaced his entire paid strategy.</p>
                     <div class="case-author">
@@ -487,7 +1306,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta-section section-alt">
+    <section class="cta-section">
         <div class="container fade-in">
             <div class="section-label">Get Started</div>
             <div class="gold-line"></div>
@@ -521,11 +1340,21 @@
     </footer>
 
     <script>
-        function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-        function closeNav() { document.getElementById('navLinks').classList.remove('open'); }
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+        function closeNav() {
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.15 });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 
