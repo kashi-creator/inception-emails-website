@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inception Emails | AI-Powered Cold Email Outreach That Delivers Qualified Leads</title>
+    <title>Inception Emails | AI-Powered Cold Email Outreach</title>
     <meta name="description" content="Get qualified decision-makers on your calendar without spending a fortune on ads. AI-powered email outreach with 11% reply rates and $15-40 cost per lead.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -16,15 +16,14 @@
         }
 
         :root {
-            --black: #0A0A0A;
+            --bg: #080808;
+            --gold: #C9A84C;
+            --gold-dim: rgba(201, 168, 76, 0.12);
+            --gold-glow: rgba(201, 168, 76, 0.35);
+            --text: #D4D4D4;
+            --muted: #777;
+            --faint: #444;
             --white: #FFFFFF;
-            --gold: #D4AF37;
-            --gold-dim: rgba(212, 175, 55, 0.15);
-            --gold-glow: rgba(212, 175, 55, 0.4);
-            --gray: #999;
-            --dark-gray: #1a1a1a;
-            --card-bg: #111111;
-            --section-alt: #0E0E0E;
         }
 
         html {
@@ -33,39 +32,50 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.6;
+            font-weight: 300;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: var(--white);
         }
 
-        /* NAV */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1.6rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(8, 8, 8, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
         }
 
         .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 0.15em;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
             color: var(--white);
-            text-decoration: none;
         }
 
         .logo span {
@@ -74,19 +84,18 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
+            color: var(--muted);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            transition: color 0.3s;
+            transition: color 0.4s;
         }
 
         .nav-links a:hover {
@@ -94,21 +103,15 @@
         }
 
         .nav-cta {
-            background: var(--gold);
-            color: var(--black) !important;
-            padding: 0.6rem 1.4rem;
-            font-weight: 700 !important;
-            font-size: 0.8rem !important;
-            letter-spacing: 0.1em !important;
-            text-transform: uppercase;
-            border-radius: 4px;
-            transition: all 0.3s;
+            color: var(--gold) !important;
+            padding: 0.6rem 1.6rem;
+            border: 1px solid var(--gold);
+            transition: all 0.4s !important;
         }
 
         .nav-cta:hover {
-            background: #e6c04a;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px var(--gold-glow);
+            background: var(--gold) !important;
+            color: var(--bg) !important;
         }
 
         .hamburger {
@@ -122,104 +125,97 @@
         }
 
         .hamburger span {
-            width: 24px;
-            height: 2px;
+            width: 22px;
+            height: 1px;
             background: var(--white);
             transition: all 0.3s;
         }
 
-        /* BUTTONS */
+        /* ── BUTTONS ── */
         .btn-primary {
             display: inline-block;
-            background: var(--gold);
-            color: var(--black);
-            padding: 1rem 2.5rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
+            color: var(--gold);
+            padding: 1rem 2.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s;
-            border: none;
+            border: 1px solid var(--gold);
+            background: transparent;
             cursor: pointer;
+            transition: all 0.4s;
         }
 
         .btn-primary:hover {
-            background: #e6c04a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 30px var(--gold-glow);
+            background: var(--gold);
+            color: var(--bg);
         }
 
         .btn-secondary {
             display: inline-block;
-            background: transparent;
-            color: var(--gold);
-            padding: 1rem 2.5rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
+            color: var(--muted);
+            padding: 1rem 2.8rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 4px;
-            border: 2px solid var(--gold);
-            transition: all 0.3s;
+            border: 1px solid var(--faint);
+            background: transparent;
             cursor: pointer;
+            transition: all 0.4s;
         }
 
         .btn-secondary:hover {
-            background: var(--gold-dim);
-            transform: translateY(-2px);
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
-        /* SECTION SHARED */
+        /* ── SECTION SHARED ── */
         .section {
-            padding: 6rem 2rem;
-        }
-
-        .section-alt {
-            background: var(--section-alt);
+            padding: 120px 2rem;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
             color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.15rem;
-            color: var(--gray);
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        .gold-line {
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
             margin-bottom: 2rem;
         }
 
-        /* HERO */
+        .section-title {
+            font-size: 3.2rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--muted);
+            max-width: 560px;
+            line-height: 1.9;
+        }
+
+        .gold-line {
+            width: 50px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── HERO ── */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -232,16 +228,26 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+            top: -20%;
+            right: -15%;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 65%);
             pointer-events: none;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--faint), transparent);
+        }
+
         .hero-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             width: 100%;
             padding: 0 2rem;
@@ -251,24 +257,25 @@
 
         .hero-badge {
             display: inline-block;
-            background: var(--gold-dim);
-            border: 1px solid rgba(212, 175, 55, 0.3);
             color: var(--gold);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            padding: 0.5rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.3);
         }
 
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            line-height: 1.08;
-            max-width: 800px;
-            margin-bottom: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            max-width: 780px;
+            margin-bottom: 2rem;
+            color: var(--white);
         }
 
         .hero h1 .gold {
@@ -276,25 +283,28 @@
         }
 
         .hero-sub {
-            font-size: 1.25rem;
-            color: var(--gray);
-            max-width: 580px;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--muted);
+            max-width: 540px;
+            line-height: 1.9;
+            margin-bottom: 3.5rem;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
-        /* METRICS BAR */
+        /* ── METRICS BAR ── */
         .metrics-bar {
             display: flex;
-            gap: 3rem;
+            gap: 4rem;
             flex-wrap: wrap;
+            padding-top: 3rem;
+            border-top: 1px solid var(--faint);
         }
 
         .metric {
@@ -302,75 +312,76 @@
         }
 
         .metric-value {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
             color: var(--gold);
             line-height: 1.2;
         }
 
         .metric-label {
-            font-size: 0.85rem;
-            color: var(--gray);
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 0.3rem;
+            letter-spacing: 0.15em;
+            margin-top: 0.4rem;
         }
 
-        /* COST COMPARISON */
+        /* ── COST COMPARISON ── */
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 0;
+            margin-top: 4rem;
         }
 
         .comparison-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 2.5rem 2rem;
+            padding: 3rem 2.5rem;
             text-align: center;
-            transition: all 0.3s;
             position: relative;
+            border-right: 1px solid var(--faint);
+        }
+
+        .comparison-card:last-child {
+            border-right: none;
         }
 
         .comparison-card.highlight {
-            border-color: var(--gold);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+            background: rgba(201, 168, 76, 0.03);
         }
 
         .comparison-card.highlight::before {
-            content: 'BEST VALUE';
+            content: 'Best Value';
             position: absolute;
-            top: -12px;
+            top: 0;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gold);
-            color: var(--black);
-            padding: 0.3rem 1rem;
+            color: var(--gold);
+            padding: 0.4rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .comparison-card .channel-name {
+            font-family: 'Inter', sans-serif;
             font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            border-radius: 50px;
-        }
-
-        .comparison-card .channel-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .comparison-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
         }
 
         .comparison-card .price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 0.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
         .comparison-card.highlight .price {
@@ -378,142 +389,155 @@
         }
 
         .comparison-card .price-note {
-            font-size: 0.85rem;
-            color: var(--gray);
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
         }
 
         .comparison-card .savings {
-            margin-top: 1.2rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--faint);
+            font-size: 0.75rem;
             color: var(--gold);
-            font-weight: 600;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* HOW IT WORKS */
+        /* ── HOW IT WORKS ── */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 0;
+            margin-top: 4rem;
         }
 
         .step-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
             padding: 2.5rem 2rem;
             position: relative;
-            transition: all 0.3s;
+            border-right: 1px solid var(--faint);
         }
 
-        .step-card:hover {
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-4px);
+        .step-card:last-child {
+            border-right: none;
+        }
+
+        .step-card:hover .step-number {
+            color: rgba(201, 168, 76, 0.25);
         }
 
         .step-number {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--gold-dim);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: rgba(68, 68, 68, 0.5);
             line-height: 1;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.4s;
         }
 
         .step-card h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--white);
         }
 
         .step-card p {
-            font-size: 0.95rem;
-            color: var(--gray);
-            line-height: 1.6;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.8;
         }
 
-        /* INDUSTRIES */
+        /* ── INDUSTRIES ── */
         .industries-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 0;
+            margin-top: 4rem;
         }
 
         .industry-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 2.5rem;
-            transition: all 0.3s;
+            padding: 3rem 2.5rem;
+            border-right: 1px solid var(--faint);
+            transition: background 0.4s;
+            display: block;
+        }
+
+        .industry-card:last-child {
+            border-right: none;
         }
 
         .industry-card:hover {
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .industry-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.2rem;
+            background: rgba(201, 168, 76, 0.03);
         }
 
         .industry-card h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--white);
         }
 
         .industry-card p {
-            font-size: 0.95rem;
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
         }
 
-        .industry-stat {
-            font-size: 0.85rem;
+        .industry-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
             color: var(--gold);
-            font-weight: 600;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: letter-spacing 0.4s;
         }
 
-        /* TESTIMONIALS */
+        .industry-card:hover .industry-link {
+            letter-spacing: 0.25em;
+        }
+
+        /* ── TESTIMONIALS ── */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 0;
+            margin-top: 4rem;
         }
 
         .testimonial-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
+            border-right: 1px solid var(--faint);
             position: relative;
         }
 
-        .testimonial-card::before {
-            content: '\201C';
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4rem;
-            color: var(--gold);
-            opacity: 0.3;
-            position: absolute;
-            top: 1rem;
-            left: 1.5rem;
+        .testimonial-card:last-child {
+            border-right: none;
+        }
+
+        .testimonial-quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            color: rgba(201, 168, 76, 0.15);
             line-height: 1;
+            margin-bottom: -1rem;
         }
 
         .testimonial-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-style: italic;
         }
 
         .testimonial-author {
@@ -523,41 +547,44 @@
         }
 
         .author-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--gold-dim);
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--faint);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
             color: var(--gold);
+            letter-spacing: 0.05em;
             flex-shrink: 0;
         }
 
         .author-name {
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: var(--white);
         }
 
         .author-title {
-            font-size: 0.8rem;
-            color: var(--gray);
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.15rem;
         }
 
         .stars {
             color: var(--gold);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
+            font-size: 0.7rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 4px;
         }
 
-        /* CTA SECTION */
+        /* ── CTA SECTION ── */
         .cta-section {
             text-align: center;
-            padding: 7rem 2rem;
+            padding: 140px 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -568,23 +595,27 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--gold-dim) 0%, transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 65%);
             pointer-events: none;
         }
 
+        .cta-section .section-label {
+            text-align: center;
+        }
+
         .cta-section .section-title {
-            max-width: 700px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .cta-section .section-subtitle {
-            max-width: 500px;
+            max-width: 480px;
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .cta-section .gold-line {
@@ -595,33 +626,40 @@
         .cta-guarantees {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
         }
 
         .cta-guarantee {
-            font-size: 0.85rem;
-            color: var(--gray);
+            font-size: 0.75rem;
+            color: var(--muted);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            letter-spacing: 0.05em;
         }
 
         .cta-guarantee .check {
             color: var(--gold);
-            font-weight: 700;
+            font-size: 0.8rem;
         }
 
-        /* FOOTER */
+        /* ── DIVIDER ── */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--faint), transparent);
+        }
+
+        /* ── FOOTER ── */
         footer {
-            background: var(--card-bg);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--faint);
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -631,14 +669,14 @@
         }
 
         .footer-brand .logo {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.6rem;
             display: block;
         }
 
         .footer-brand p {
-            font-size: 0.85rem;
-            color: var(--gray);
+            font-size: 0.75rem;
+            color: var(--muted);
         }
 
         .footer-links {
@@ -648,10 +686,10 @@
         }
 
         .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s;
+            color: var(--muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            transition: color 0.4s;
         }
 
         .footer-links a:hover {
@@ -659,20 +697,21 @@
         }
 
         .footer-copy {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
+            font-size: 0.7rem;
+            color: var(--faint);
             width: 100%;
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            border-top: 1px solid rgba(68, 68, 68, 0.4);
+            letter-spacing: 0.05em;
         }
 
-        /* ANIMATIONS */
+        /* ── ANIMATIONS ── */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.visible {
@@ -680,24 +719,37 @@
             transform: translateY(0);
         }
 
-        /* RESPONSIVE */
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
 
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.6rem;
             }
 
             .steps-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .step-card:nth-child(2) {
+                border-right: none;
+            }
+
+            .step-card:nth-child(1),
+            .step-card:nth-child(2) {
+                border-bottom: 1px solid var(--faint);
+            }
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 1rem 1.5rem;
+                padding: 1.2rem 1.5rem;
             }
 
             .nav-links {
@@ -707,11 +759,11 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(10, 10, 10, 0.98);
+                background: rgba(8, 8, 8, 0.98);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 2rem;
+                gap: 2.5rem;
                 z-index: 999;
             }
 
@@ -720,7 +772,8 @@
             }
 
             .nav-links a {
-                font-size: 1.1rem;
+                font-size: 0.9rem;
+                color: var(--text);
             }
 
             .hamburger {
@@ -731,15 +784,15 @@
             .hero {
                 padding-top: 100px;
                 min-height: auto;
-                padding-bottom: 4rem;
+                padding-bottom: 5rem;
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.6rem;
             }
 
             .hero-sub {
-                font-size: 1.05rem;
+                font-size: 1rem;
             }
 
             .hero-buttons {
@@ -753,26 +806,55 @@
             }
 
             .metrics-bar {
-                gap: 2rem;
+                gap: 2.5rem;
             }
 
             .metric-value {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
 
             .comparison-grid,
             .industries-grid,
-            .testimonials-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-card,
+            .industry-card,
+            .testimonial-card {
+                border-right: none;
+                border-bottom: 1px solid var(--faint);
+            }
+
+            .comparison-card:last-child,
+            .industry-card:last-child,
+            .testimonial-card:last-child {
+                border-bottom: none;
+            }
+
             .steps-grid {
                 grid-template-columns: 1fr;
             }
 
+            .step-card {
+                border-right: none;
+                border-bottom: 1px solid var(--faint);
+            }
+
+            .step-card:last-child {
+                border-bottom: none;
+            }
+
             .section {
-                padding: 4rem 1.5rem;
+                padding: 80px 1.5rem;
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+
+            .cta-section {
+                padding: 100px 1.5rem;
             }
 
             .footer-content {
@@ -809,7 +891,7 @@
         <div class="hero-content">
             <div class="hero-badge">AI-Powered Lead Generation</div>
             <h1>Qualified Leads<br>On Your Calendar.<br><span class="gold">No Ads Required.</span></h1>
-            <p class="hero-sub">Our AI-powered email outreach delivers decision-makers straight to your calendar at a fraction of the cost of traditional advertising.</p>
+            <p class="hero-sub">AI-powered email outreach delivers decision-makers to your calendar at a fraction of the cost of traditional advertising.</p>
             <div class="hero-buttons">
                 <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Free Strategy Call</a>
                 <a href="#how-it-works" class="btn-secondary">See How It Works</a>
@@ -832,7 +914,7 @@
     </section>
 
     <!-- COST COMPARISON -->
-    <section class="section section-alt" id="comparison">
+    <section class="section" id="comparison">
         <div class="container fade-in">
             <div class="section-label">Cost Comparison</div>
             <div class="gold-line"></div>
@@ -840,20 +922,17 @@
             <p class="section-subtitle">See how AI-powered outreach stacks up against traditional paid advertising channels.</p>
             <div class="comparison-grid">
                 <div class="comparison-card">
-                    <div class="channel-icon">&#x1F50D;</div>
-                    <h3>Google Ads</h3>
+                    <div class="channel-name">Google Ads</div>
                     <div class="price">$150 - $300</div>
                     <div class="price-note">Per Qualified Lead</div>
                 </div>
                 <div class="comparison-card">
-                    <div class="channel-icon">&#x1F4F1;</div>
-                    <h3>Meta / Facebook</h3>
+                    <div class="channel-name">Meta / Facebook</div>
                     <div class="price">$80 - $200</div>
                     <div class="price-note">Per Qualified Lead</div>
                 </div>
                 <div class="comparison-card highlight">
-                    <div class="channel-icon">&#x2709;</div>
-                    <h3>Inception Emails</h3>
+                    <div class="channel-name">Inception Emails</div>
                     <div class="price">$15 - $40</div>
                     <div class="price-note">Per Qualified Lead</div>
                     <div class="savings">Save up to 90% per lead</div>
@@ -861,6 +940,8 @@
             </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- HOW IT WORKS -->
     <section class="section" id="how-it-works">
@@ -894,35 +975,36 @@
         </div>
     </section>
 
+    <div class="section-divider"></div>
+
     <!-- INDUSTRIES -->
-    <section class="section section-alt" id="industries">
+    <section class="section" id="industries">
         <div class="container fade-in">
             <div class="section-label">Industries We Serve</div>
             <div class="gold-line"></div>
             <h2 class="section-title">Built for B2B Growth</h2>
             <p class="section-subtitle">We specialize in verticals where decision-makers respond to direct, personalized outreach.</p>
             <div class="industries-grid">
-                <a href="/msp.html" class="industry-card" style="text-decoration: none; color: inherit;">
-                    <div class="industry-icon">&#x1F5A5;</div>
+                <a href="/msp.html" class="industry-card">
                     <h3>Managed Service Providers</h3>
                     <p>Connect with IT directors and business owners actively looking for reliable managed IT support. We target companies with 20-500 employees in your service area.</p>
-                    <div class="industry-stat">Learn more &#8594;</div>
+                    <div class="industry-link">Learn more &rarr;</div>
                 </a>
-                <a href="/functional-medicine.html" class="industry-card" style="text-decoration: none; color: inherit;">
-                    <div class="industry-icon">&#x2695;</div>
+                <a href="/functional-medicine.html" class="industry-card">
                     <h3>Functional Medicine</h3>
                     <p>Reach health-conscious individuals and practitioners seeking integrative care solutions. Our AI identifies prospects based on health interests and demographics.</p>
-                    <div class="industry-stat">Learn more &#8594;</div>
+                    <div class="industry-link">Learn more &rarr;</div>
                 </a>
-                <a href="/property-maintenance.html" class="industry-card" style="text-decoration: none; color: inherit;">
-                    <div class="industry-icon">&#x1F3E2;</div>
+                <a href="/property-maintenance.html" class="industry-card">
                     <h3>Property Maintenance</h3>
                     <p>Target property managers, HOAs, and facility directors who need reliable maintenance services. We reach decision-makers across commercial and residential portfolios.</p>
-                    <div class="industry-stat">Learn more &#8594;</div>
+                    <div class="industry-link">Learn more &rarr;</div>
                 </a>
             </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- TESTIMONIALS -->
     <section class="section" id="testimonials">
@@ -934,6 +1016,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote-mark">&ldquo;</div>
                     <p class="testimonial-text">We went from chasing leads on LinkedIn to having 15-20 qualified meetings per month show up on our calendar. The consistency is what sold us. No more feast-or-famine cycles.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">DR</div>
@@ -945,6 +1028,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote-mark">&ldquo;</div>
                     <p class="testimonial-text">Patient acquisition was our biggest challenge. Within 60 days of starting, we had a full schedule and a waitlist. The AI personalization makes every outreach feel genuine and warm.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">ST</div>
@@ -956,6 +1040,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <div class="testimonial-quote-mark">&ldquo;</div>
                     <p class="testimonial-text">We scaled from 12 to 45 commercial accounts in six months. The leads are pre-qualified so our team only meets with property managers who are actually ready to switch providers.</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">MR</div>
@@ -970,7 +1055,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta-section section-alt">
+    <section class="cta-section">
         <div class="container fade-in">
             <div class="section-label">Get Started</div>
             <div class="gold-line"></div>
@@ -1012,14 +1097,14 @@
             document.getElementById('navLinks').classList.remove('open');
         }
 
-        // Scroll fade-in
+        // Scroll-triggered fade-in using IntersectionObserver
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
