@@ -866,10 +866,357 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+
+            .bg-orb {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        /* ── PREMIUM: KEYFRAMES ── */
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -40px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+
+        @keyframes float-reverse {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-30px, 30px); }
+            66% { transform: translate(20px, -20px); }
+        }
+
+        @keyframes grain-drift {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            30% { transform: translate(3%, -15%); }
+            50% { transform: translate(12%, 9%); }
+            70% { transform: translate(9%, 4%); }
+            90% { transform: translate(-1%, 7%); }
+        }
+
+        @keyframes counter-pulse {
+            0%, 100% { text-shadow: 0 0 0 rgba(201,168,76,0); }
+            50% { text-shadow: 0 0 20px rgba(201,168,76,0.4); }
+        }
+
+        /* ── PREMIUM: GRADIENT ANIMATED TEXT ── */
+        .gradient-text {
+            background: linear-gradient(135deg, #FFD700, #C9A84C, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        /* ── PREMIUM: GOLD GLOW ── */
+        .gold-glow {
+            text-shadow: 0 0 10px rgba(201,168,76,0.6), 0 0 30px rgba(201,168,76,0.3);
+        }
+
+        /* ── PREMIUM: GLASSMORPHISM CARDS ── */
+        .glass-card {
+            background: rgba(201,168,76,0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(201,168,76,0.12);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(201,168,76,0.08);
+            border-radius: 2px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(201,168,76,0.25);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.15);
+            transform: translateY(-4px);
+        }
+
+        /* ── PREMIUM: ANIMATED BUTTON SWEEP ── */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #C9A84C, #FFD700);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            transform: scaleX(1);
+        }
+
+        .btn-primary:hover {
+            color: var(--bg);
+            background: transparent;
+        }
+
+        /* ── PREMIUM: FLOATING GOLD ORBS ── */
+        .bg-orb {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(60px);
+            z-index: 0;
+        }
+
+        .bg-orb-1 {
+            top: -10%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-orb-2 {
+            bottom: 30%;
+            left: -15%;
+            background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+            animation: float-reverse 10s ease-in-out infinite;
+        }
+
+        .bg-orb-3 {
+            bottom: -5%;
+            right: 20%;
+            background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+            animation: float 12s ease-in-out infinite;
+            animation-delay: -4s;
+        }
+
+        /* ── PREMIUM: GRAIN/NOISE OVERLAY ── */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+            animation: grain-drift 8s steps(10) infinite;
+        }
+
+        /* ── PREMIUM: STAGGERED SCROLL REVEALS ── */
+        .fade-in .comparison-card:nth-child(1),
+        .fade-in .step-card:nth-child(1),
+        .fade-in .industry-card:nth-child(1),
+        .fade-in .testimonial-card:nth-child(1) {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: 0s;
+        }
+
+        .fade-in .comparison-card:nth-child(2),
+        .fade-in .step-card:nth-child(2),
+        .fade-in .industry-card:nth-child(2),
+        .fade-in .testimonial-card:nth-child(2) {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: 0.15s;
+        }
+
+        .fade-in .comparison-card:nth-child(3),
+        .fade-in .step-card:nth-child(3),
+        .fade-in .industry-card:nth-child(3),
+        .fade-in .testimonial-card:nth-child(3) {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: 0.3s;
+        }
+
+        .fade-in .step-card:nth-child(4) {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: 0.45s;
+        }
+
+        .fade-in.visible .comparison-card,
+        .fade-in.visible .step-card,
+        .fade-in.visible .industry-card,
+        .fade-in.visible .testimonial-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── PREMIUM: EDITORIAL HERO TYPOGRAPHY ── */
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem) !important;
+            font-weight: 300;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+        }
+
+        /* ── PREMIUM: SECTION LABELS ── */
+        .section-label {
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: rgba(201,168,76,0.7);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
+        }
+
+        /* ── PREMIUM: DIAGONAL SECTION DIVIDERS ── */
+        .section-divider {
+            height: 80px;
+            background: transparent;
+            clip-path: polygon(0 0, 100% 30%, 100% 70%, 0 100%);
+            background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 50%, rgba(201,168,76,0.02) 100%);
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent);
+            transform: rotate(-1deg);
+        }
+
+        /* ── PREMIUM: TESTIMONIAL DECORATIVE QUOTES ── */
+        .testimonial-quote-mark {
+            font-size: 8rem !important;
+            color: rgba(201,168,76,0.1) !important;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+            margin: 0 !important;
+            z-index: 0;
+        }
+
+        .testimonial-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 0;
+            background: linear-gradient(180deg, var(--gold), transparent);
+            transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .testimonial-card:hover::before {
+            height: 100%;
+        }
+
+        /* ── PREMIUM: METRIC COUNTER ANIMATION ── */
+        .metric-value {
+            transition: all 0.3s ease;
+        }
+
+        .metric-value.counted {
+            animation: counter-pulse 1.5s ease-out;
+        }
+
+        /* ── PREMIUM: COMPARISON CARD HIGHLIGHT GLOW ── */
+        .comparison-card.highlight {
+            position: relative;
+        }
+
+        .comparison-card.highlight::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(180deg, rgba(201,168,76,0.15), transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ── PREMIUM: STEP CARD HOVER LINE ── */
+        .step-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step-card:hover::before {
+            width: 100%;
+        }
+
+        /* ── PREMIUM: NAV GLASSMORPHISM ENHANCEMENT ── */
+        nav {
+            border-bottom: 1px solid rgba(201,168,76,0.06) !important;
+            box-shadow: 0 1px 30px rgba(0,0,0,0.3);
+        }
+
+        /* ── PREMIUM: GOLD LINE SHIMMER ── */
+        .gold-line {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gold-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 3s linear infinite;
+        }
+
+        /* Ensure content stays above orbs */
+        nav, .hero, .section, .cta-section, footer {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
+
+    <!-- PREMIUM: FLOATING GOLD ORBS -->
+    <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-3" aria-hidden="true"></div>
 
     <!-- NAV -->
     <nav>
@@ -890,7 +1237,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">AI-Powered Lead Generation</div>
-            <h1>Qualified Leads<br>On Your Calendar.<br><span class="gold">No Ads Required.</span></h1>
+            <h1>Qualified Leads<br>On Your Calendar.<br><span class="gold gradient-text">No Ads Required.</span></h1>
             <p class="hero-sub">AI-powered email outreach delivers decision-makers to your calendar at a fraction of the cost of traditional advertising.</p>
             <div class="hero-buttons">
                 <a href="https://web-production-b391c.up.railway.app" target="_blank" class="btn-primary">Start Your Onboarding</a>
@@ -898,15 +1245,15 @@
             </div>
             <div class="metrics-bar">
                 <div class="metric">
-                    <div class="metric-value">50M+</div>
+                    <div class="metric-value gold-glow" data-target="50" data-suffix="M+">50M+</div>
                     <div class="metric-label">Emails Delivered</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">11%</div>
+                    <div class="metric-value gold-glow" data-target="11" data-suffix="%">11%</div>
                     <div class="metric-label">Avg Reply Rate</div>
                 </div>
                 <div class="metric">
-                    <div class="metric-value">340%</div>
+                    <div class="metric-value gold-glow" data-target="340" data-suffix="%">340%</div>
                     <div class="metric-label">Average Client ROI</div>
                 </div>
             </div>
@@ -921,21 +1268,21 @@
             <h2 class="section-title">Stop Overpaying for Leads</h2>
             <p class="section-subtitle">See how AI-powered outreach stacks up against traditional paid advertising channels.</p>
             <div class="comparison-grid">
-                <div class="comparison-card">
+                <div class="comparison-card glass-card">
                     <div class="channel-name">Google Ads</div>
                     <div class="price">$150 - $300</div>
                     <div class="price-note">Per Qualified Lead</div>
                 </div>
-                <div class="comparison-card">
+                <div class="comparison-card glass-card">
                     <div class="channel-name">Meta / Facebook</div>
                     <div class="price">$80 - $200</div>
                     <div class="price-note">Per Qualified Lead</div>
                 </div>
-                <div class="comparison-card highlight">
+                <div class="comparison-card highlight glass-card">
                     <div class="channel-name">Inception Emails</div>
-                    <div class="price">$15 - $40</div>
+                    <div class="price gradient-text">$15 - $40</div>
                     <div class="price-note">Per Qualified Lead</div>
-                    <div class="savings">Save up to 90% per lead</div>
+                    <div class="savings gold-glow">Save up to 90% per lead</div>
                 </div>
             </div>
         </div>
@@ -951,22 +1298,22 @@
             <h2 class="section-title">How It Works</h2>
             <p class="section-subtitle">A four-step AI engine that turns cold prospects into booked meetings on your calendar.</p>
             <div class="steps-grid">
-                <div class="step-card">
+                <div class="step-card glass-card">
                     <div class="step-number">01</div>
                     <h3>AI Research</h3>
                     <p>Our AI analyzes prospect data across firmographic, technographic, and behavioral dimensions to build a precision-targeted list of ideal buyers.</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card glass-card">
                     <div class="step-number">02</div>
                     <h3>Personalized Outreach</h3>
                     <p>Every email is crafted individually using AI. No templates, no mail-merge. Each message speaks directly to the prospect's specific situation and pain points.</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card glass-card">
                     <div class="step-number">03</div>
                     <h3>Lead Delivery</h3>
                     <p>Interested prospects are qualified through intelligent conversation and booked directly onto your calendar. You only talk to people ready to buy.</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card glass-card">
                     <div class="step-number">04</div>
                     <h3>Optimization</h3>
                     <p>Real-time AI learning continuously refines targeting, messaging, and timing. Your campaigns get smarter and more effective every single day.</p>
@@ -985,17 +1332,17 @@
             <h2 class="section-title">Built for B2B Growth</h2>
             <p class="section-subtitle">We specialize in verticals where decision-makers respond to direct, personalized outreach.</p>
             <div class="industries-grid">
-                <a href="/msp.html" class="industry-card">
+                <a href="/msp.html" class="industry-card glass-card">
                     <h3>Managed Service Providers</h3>
                     <p>Connect with IT directors and business owners actively looking for reliable managed IT support. We target companies with 20-500 employees in your service area.</p>
                     <div class="industry-link">Learn more &rarr;</div>
                 </a>
-                <a href="/functional-medicine.html" class="industry-card">
+                <a href="/functional-medicine.html" class="industry-card glass-card">
                     <h3>Functional Medicine</h3>
                     <p>Reach health-conscious individuals and practitioners seeking integrative care solutions. Our AI identifies prospects based on health interests and demographics.</p>
                     <div class="industry-link">Learn more &rarr;</div>
                 </a>
-                <a href="/property-maintenance.html" class="industry-card">
+                <a href="/property-maintenance.html" class="industry-card glass-card">
                     <h3>Property Maintenance</h3>
                     <p>Target property managers, HOAs, and facility directors who need reliable maintenance services. We reach decision-makers across commercial and residential portfolios.</p>
                     <div class="industry-link">Learn more &rarr;</div>
@@ -1014,8 +1361,8 @@
             <h2 class="section-title">What Our Clients Say</h2>
             <p class="section-subtitle">Real results from real businesses using AI-powered outreach.</p>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="testimonial-card glass-card">
+                    <div class="stars gold-glow">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <div class="testimonial-quote-mark">&ldquo;</div>
                     <p class="testimonial-text">We went from chasing leads on LinkedIn to having 15-20 qualified meetings per month show up on our calendar. The consistency is what sold us. No more feast-or-famine cycles.</p>
                     <div class="testimonial-author">
@@ -1026,8 +1373,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="testimonial-card glass-card">
+                    <div class="stars gold-glow">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <div class="testimonial-quote-mark">&ldquo;</div>
                     <p class="testimonial-text">Patient acquisition was our biggest challenge. Within 60 days of starting, we had a full schedule and a waitlist. The AI personalization makes every outreach feel genuine and warm.</p>
                     <div class="testimonial-author">
@@ -1038,8 +1385,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="testimonial-card glass-card">
+                    <div class="stars gold-glow">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
                     <div class="testimonial-quote-mark">&ldquo;</div>
                     <p class="testimonial-text">We scaled from 12 to 45 commercial accounts in six months. The leads are pre-qualified so our team only meets with property managers who are actually ready to switch providers.</p>
                     <div class="testimonial-author">
@@ -1059,7 +1406,7 @@
         <div class="container fade-in">
             <div class="section-label">Get Started</div>
             <div class="gold-line"></div>
-            <h2 class="section-title">Ready to Fill Your Calendar<br>With <span style="color: var(--gold);">Qualified Leads?</span></h2>
+            <h2 class="section-title">Ready to Fill Your Calendar<br>With <span class="gradient-text" style="display:inline;">Qualified Leads?</span></h2>
             <p class="section-subtitle">Book a free strategy call and we will show you exactly how many qualified leads we can deliver for your business each month.</p>
             <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:40px;">
                 <a href="https://web-production-b391c.up.railway.app" target="_blank" class="btn-primary">Start Your Onboarding</a>
@@ -1110,6 +1457,58 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Counter animation for metrics
+        function animateCounter(el) {
+            const target = parseInt(el.getAttribute('data-target'));
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = easeOutCubic(progress);
+                const current = Math.floor(easedProgress * target);
+
+                el.textContent = current + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target + suffix;
+                    el.classList.add('counted');
+                }
+            }
+
+            el.textContent = '0' + suffix;
+            requestAnimationFrame(update);
+        }
+
+        const metricObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    animateCounter(entry.target);
+                    metricObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.metric-value[data-target]').forEach(el => metricObserver.observe(el));
+
+        // Subtle parallax on orbs based on scroll
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const orbs = document.querySelectorAll('.bg-orb');
+            orbs.forEach((orb, i) => {
+                const speed = 0.02 + (i * 0.01);
+                orb.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+            });
+        }, { passive: true });
     </script>
 
 </body>
