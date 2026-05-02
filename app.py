@@ -94,6 +94,24 @@ def property_maintenance():
     return send_from_directory(".", "property-maintenance.html")
 
 
+@app.route("/dental.html")
+@app.route("/dental")
+def dental():
+    return send_from_directory(".", "dental.html")
+
+
+@app.route("/life-insurance.html")
+@app.route("/life-insurance")
+def life_insurance():
+    return send_from_directory(".", "life-insurance.html")
+
+
+@app.route("/mortgage.html")
+@app.route("/mortgage")
+def mortgage():
+    return send_from_directory(".", "mortgage.html")
+
+
 @app.route("/apply")
 @app.route("/apply.html")
 def apply_form():

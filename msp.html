@@ -16,14 +16,15 @@
         }
 
         :root {
-            --bg: #080808;
+            --bg: #FFFFFF;
             --gold: #C9A84C;
+            --gold-dark: #8B7532;
             --gold-dim: rgba(201, 168, 76, 0.12);
             --gold-glow: rgba(201, 168, 76, 0.35);
-            --text: #D4D4D4;
-            --muted: #777;
-            --faint: #444;
-            --white: #FFFFFF;
+            --text: #1A1A1A;
+            --muted: #6B6B6B;
+            --faint: #E5E5E5;
+            --white: #0A0A0A;
         }
 
         html {
@@ -63,7 +64,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(8, 8, 8, 0.9);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(201, 168, 76, 0.08);
@@ -111,7 +112,71 @@
 
         .nav-cta:hover {
             background: var(--gold) !important;
-            color: var(--bg) !important;
+            color: var(--white) !important;
+        }
+
+        /* Industries dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > .nav-dropdown-toggle {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .nav-dropdown > .nav-dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0.45em;
+            height: 0.45em;
+            border-right: 1px solid currentColor;
+            border-bottom: 1px solid currentColor;
+            transform: rotate(45deg) translate(-2px, -2px);
+            transition: transform 0.3s;
+        }
+        .nav-dropdown.open > .nav-dropdown-toggle::after,
+        .nav-dropdown:hover > .nav-dropdown-toggle::after {
+            transform: rotate(225deg) translate(-1px, -1px);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translate(-50%, -6px);
+            list-style: none;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 168, 76, 0.18);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+            padding: 0.4rem 0;
+            min-width: 240px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown.open .dropdown-menu,
+        .nav-dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+        .dropdown-menu li { display: block; }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.7rem 1.4rem;
+            color: var(--muted);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.3s, background 0.3s;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.06);
         }
 
         .hamburger {
@@ -149,7 +214,7 @@
 
         .btn-primary:hover {
             background: var(--gold);
-            color: var(--bg);
+            color: var(--white);
         }
 
         .btn-secondary {
@@ -818,12 +883,12 @@
 
         .footer-copy {
             font-size: 0.7rem;
-            color: var(--faint);
+            color: var(--muted);
             width: 100%;
             text-align: center;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(68, 68, 68, 0.4);
+            border-top: 1px solid rgba(229, 229, 229, 0.8);
             letter-spacing: 0.05em;
         }
 
@@ -891,7 +956,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(8, 8, 8, 0.98);
+                background: rgba(255, 255, 255, 0.98);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -907,6 +972,29 @@
                 font-size: 0.9rem;
                 color: var(--text);
             }
+
+            .nav-dropdown { position: static; text-align: center; }
+            .nav-dropdown > .nav-dropdown-toggle { color: var(--gold); font-weight: 500; pointer-events: none; }
+            .nav-dropdown > .nav-dropdown-toggle::after { display: none; }
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                padding: 0.8rem 0 0;
+                min-width: auto;
+                text-align: center;
+            }
+            .nav-dropdown:hover .dropdown-menu,
+            .nav-dropdown.open .dropdown-menu,
+            .nav-dropdown:focus-within .dropdown-menu { transform: none; }
+            .dropdown-menu li { padding: 0.3rem 0; }
+            .dropdown-menu a { font-size: 0.85rem; padding: 0; color: var(--text); }
 
             .hamburger {
                 display: flex;
@@ -1016,10 +1104,18 @@
     <nav>
         <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/" onclick="closeNav()">Home</a></li>
-            <li><a href="/msp.html" onclick="closeNav()">MSPs</a></li>
-            <li><a href="/functional-medicine.html" onclick="closeNav()">Functional Medicine</a></li>
-            <li><a href="/property-maintenance.html" onclick="closeNav()">Property Maintenance</a></li>
+            <li class="nav-dropdown">
+                <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');">Industries</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/msp.html" onclick="closeNav()">MSPs</a></li>
+                    <li><a href="/dental.html" onclick="closeNav()">Dental</a></li>
+                    <li><a href="/functional-medicine.html" onclick="closeNav()">Functional Medicine</a></li>
+                    <li><a href="/life-insurance.html" onclick="closeNav()">Life Insurance</a></li>
+                    <li><a href="/mortgage.html" onclick="closeNav()">Mortgage</a></li>
+                    <li><a href="/property-maintenance.html" onclick="closeNav()">Property Maintenance</a></li>
+                </ul>
+            </li>
+            <li><a href="/apply" onclick="closeNav()">Apply</a></li>
             <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" class="nav-cta">Book a Call</a></li>
         </ul>
         <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
@@ -1035,8 +1131,8 @@
             <h1>Stop Chasing IT Leads.<br><span class="gold">Let Them Come to You.</span></h1>
             <p class="hero-sub">We deliver qualified MSP prospects directly to your calendar using AI-powered hyper-personalized outreach — at a fraction of what you're paying Google.</p>
             <div class="hero-buttons">
-                <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Strategy Call</a>
-                <a href="#roi" class="btn-secondary">See the ROI</a>
+                <a href="/apply" class="btn-primary">Apply</a>
+                <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-secondary">Book a Strategy Call</a>
             </div>
         </div>
     </section>
@@ -1311,8 +1407,11 @@
             <div class="section-label">Get Started</div>
             <div class="gold-line"></div>
             <h2 class="section-title">Ready to Scale Your<br><span style="color: var(--gold);">MSP Business?</span></h2>
-            <p class="section-subtitle">Book a free strategy call and we'll show you exactly how many qualified IT leads we can deliver each month.</p>
-            <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-primary">Book Your Strategy Call</a>
+            <p class="section-subtitle">Apply to work with us, or book a free strategy call and we'll show you exactly how many qualified IT leads we can deliver each month.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
+                <a href="/apply" class="btn-primary">Apply</a>
+                <a href="https://calendly.com/kashikeefe/30min" target="_blank" class="btn-secondary">Book a Strategy Call</a>
+            </div>
             <div class="cta-guarantees">
                 <div class="cta-guarantee"><span class="check">&#10003;</span> No commitment required</div>
                 <div class="cta-guarantee"><span class="check">&#10003;</span> Custom lead projections</div>
@@ -1329,10 +1428,13 @@
                 <p>AI-Powered Cold Email Outreach</p>
             </div>
             <ul class="footer-links">
-                <li><a href="/">Home</a></li>
                 <li><a href="/msp.html">MSPs</a></li>
+                <li><a href="/dental.html">Dental</a></li>
                 <li><a href="/functional-medicine.html">Functional Medicine</a></li>
+                <li><a href="/life-insurance.html">Life Insurance</a></li>
+                <li><a href="/mortgage.html">Mortgage</a></li>
                 <li><a href="/property-maintenance.html">Property Maintenance</a></li>
+                <li><a href="/apply">Apply</a></li>
                 <li><a href="https://calendly.com/kashikeefe/30min" target="_blank">Book a Call</a></li>
             </ul>
             <div class="footer-copy">&copy; 2026 Inception Emails. All rights reserved.</div>

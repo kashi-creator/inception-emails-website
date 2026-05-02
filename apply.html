@@ -13,20 +13,20 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #080808;
-            --bg-alt: #0c0c0c;
-            --bg-input: #111111;
+            --bg: #FFFFFF;
+            --bg-alt: #FAFAFA;
+            --bg-input: #FAFAFA;
             --gold: #C9A84C;
             --gold-light: #FFD700;
             --gold-dark: #8B7532;
             --gold-dim: rgba(201, 168, 76, 0.12);
             --gold-glow: rgba(201, 168, 76, 0.35);
-            --text: #D4D4D4;
-            --muted: #777;
-            --faint: #444;
-            --white: #FFFFFF;
-            --error: #E5685A;
-            --error-dim: rgba(229, 104, 90, 0.12);
+            --text: #1A1A1A;
+            --muted: #6B6B6B;
+            --faint: #E5E5E5;
+            --white: #0A0A0A;
+            --error: #C0392B;
+            --error-dim: rgba(192, 57, 43, 0.08);
         }
 
         ::-webkit-scrollbar { width: 6px; }
@@ -53,9 +53,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 22px 48px;
-            background: rgba(8, 8, 8, 0.85);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+            box-shadow: 0 1px 30px rgba(0, 0, 0, 0.04);
         }
         nav .logo {
             font-family: 'Cormorant Garamond', serif;
@@ -87,10 +88,81 @@
             border-radius: 2px;
         }
 
+        .nav-dropdown { position: relative; }
+        .nav-dropdown > .nav-dropdown-toggle {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+        .nav-dropdown > .nav-dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0.45em;
+            height: 0.45em;
+            border-right: 1px solid currentColor;
+            border-bottom: 1px solid currentColor;
+            transform: rotate(45deg) translate(-2px, -2px);
+            transition: transform 0.3s;
+        }
+        .nav-dropdown.open > .nav-dropdown-toggle::after,
+        .nav-dropdown:hover > .nav-dropdown-toggle::after {
+            transform: rotate(225deg) translate(-1px, -1px);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translate(-50%, -6px);
+            list-style: none;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 168, 76, 0.18);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+            padding: 0.4rem 0;
+            min-width: 240px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown.open .dropdown-menu,
+        .nav-dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 0);
+        }
+        .dropdown-menu li { display: block; }
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 22px;
+            color: var(--muted);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.06);
+        }
+
         @media (max-width: 720px) {
-            nav { padding: 18px 24px; }
-            nav .nav-links { gap: 18px; }
-            nav .nav-links li:not(:last-child) { display: none; }
+            nav { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
+            nav .nav-links { gap: 14px; flex-wrap: wrap; }
+            .dropdown-menu {
+                left: auto;
+                right: 0;
+                transform: translate(0, -6px);
+                min-width: 220px;
+            }
+            .nav-dropdown:hover .dropdown-menu,
+            .nav-dropdown.open .dropdown-menu,
+            .nav-dropdown:focus-within .dropdown-menu {
+                transform: translate(0, 0);
+            }
         }
 
         /* MAIN */
@@ -157,7 +229,7 @@
             font-family: inherit;
             font-size: 15px;
             line-height: 1.4;
-            transition: border-color 0.2s, background 0.2s;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
             width: 100%;
         }
         .field input:focus,
@@ -165,7 +237,8 @@
         .field textarea:focus {
             outline: none;
             border-color: var(--gold);
-            background: #141414;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
         }
         .field textarea { resize: vertical; min-height: 120px; }
         .field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 44px; }
@@ -185,7 +258,7 @@
 
         button[type="submit"] {
             background: var(--gold);
-            color: #1a1a1a;
+            color: #0A0A0A;
             border: none;
             padding: 18px 32px;
             font-family: inherit;
@@ -195,12 +268,15 @@
             text-transform: uppercase;
             cursor: pointer;
             border-radius: 2px;
-            transition: background 0.2s, transform 0.1s;
+            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
             position: relative;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.25);
         }
         button[type="submit"]:hover:not([disabled]) {
-            background: var(--gold-light);
+            background: var(--gold-dark);
+            color: #FFFFFF;
             transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
         }
         button[type="submit"][disabled] {
             background: var(--gold-dark);
@@ -211,7 +287,7 @@
         .form-error {
             color: var(--error);
             background: var(--error-dim);
-            border: 1px solid rgba(229, 104, 90, 0.4);
+            border: 1px solid rgba(192, 57, 43, 0.4);
             padding: 14px 16px;
             border-radius: 2px;
             font-size: 14px;
@@ -221,7 +297,7 @@
 
         .privacy {
             font-size: 12px;
-            color: var(--faint);
+            color: var(--muted);
             line-height: 1.5;
         }
         .privacy a { color: var(--muted); }
@@ -229,7 +305,7 @@
         footer {
             padding: 24px 48px;
             border-top: 1px solid rgba(201, 168, 76, 0.06);
-            color: var(--faint);
+            color: var(--muted);
             font-size: 12px;
             text-align: center;
         }
@@ -246,10 +322,17 @@
     <nav>
         <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
         <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/msp.html">MSPs</a></li>
-            <li><a href="/functional-medicine.html">Functional Medicine</a></li>
-            <li><a href="/property-maintenance.html">Property Maintenance</a></li>
+            <li class="nav-dropdown">
+                <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');">Industries</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/msp.html">MSPs</a></li>
+                    <li><a href="/dental.html">Dental</a></li>
+                    <li><a href="/functional-medicine.html">Functional Medicine</a></li>
+                    <li><a href="/life-insurance.html">Life Insurance</a></li>
+                    <li><a href="/mortgage.html">Mortgage</a></li>
+                    <li><a href="/property-maintenance.html">Property Maintenance</a></li>
+                </ul>
+            </li>
             <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a></li>
         </ul>
     </nav>
