@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply | Inception Emails</title>
+    <meta name="description" content="Apply to work with Inception Emails. Tell us about your business and we'll get on a call to scope the right outreach plan.">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #080808;
+            --bg-alt: #0c0c0c;
+            --bg-input: #111111;
+            --gold: #C9A84C;
+            --gold-light: #FFD700;
+            --gold-dark: #8B7532;
+            --gold-dim: rgba(201, 168, 76, 0.12);
+            --gold-glow: rgba(201, 168, 76, 0.35);
+            --text: #D4D4D4;
+            --muted: #777;
+            --faint: #444;
+            --white: #FFFFFF;
+            --error: #E5685A;
+            --error-dim: rgba(229, 104, 90, 0.12);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+        ::selection { background: rgba(201,168,76,0.35); color: var(--white); }
+
+        html, body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100%; }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* NAV (lightweight version of the marketing nav) */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 48px;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+        }
+        nav .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            color: var(--white);
+            text-decoration: none;
+        }
+        nav .logo span { color: var(--gold); }
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        nav .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+        nav .nav-links a:hover { color: var(--gold); }
+        nav .nav-cta {
+            color: var(--gold) !important;
+            border: 1px solid var(--gold);
+            padding: 8px 18px;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 720px) {
+            nav { padding: 18px 24px; }
+            nav .nav-links { gap: 18px; }
+            nav .nav-links li:not(:last-child) { display: none; }
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 80px 24px 64px;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 620px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(36px, 5vw, 52px);
+            line-height: 1.05;
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+        h1 .gold { color: var(--gold); font-style: italic; }
+
+        .lede {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--muted);
+            margin-bottom: 48px;
+            max-width: 540px;
+        }
+
+        form { display: flex; flex-direction: column; gap: 22px; }
+
+        .field { display: flex; flex-direction: column; gap: 8px; }
+
+        .field label {
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .field label .req { color: var(--gold); margin-left: 4px; }
+
+        .field input,
+        .field select,
+        .field textarea {
+            background: var(--bg-input);
+            border: 1px solid var(--faint);
+            border-radius: 2px;
+            padding: 14px 16px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.4;
+            transition: border-color 0.2s, background 0.2s;
+            width: 100%;
+        }
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: #141414;
+        }
+        .field textarea { resize: vertical; min-height: 120px; }
+        .field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 44px; }
+        .field select option { background: var(--bg-alt); color: var(--text); }
+
+        .field.has-error input,
+        .field.has-error select,
+        .field.has-error textarea { border-color: var(--error); background: var(--error-dim); }
+
+        .field-error {
+            font-size: 13px;
+            color: var(--error);
+            min-height: 1em;
+        }
+
+        .submit-row { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+
+        button[type="submit"] {
+            background: var(--gold);
+            color: #1a1a1a;
+            border: none;
+            padding: 18px 32px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.2s, transform 0.1s;
+            position: relative;
+        }
+        button[type="submit"]:hover:not([disabled]) {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+        button[type="submit"][disabled] {
+            background: var(--gold-dark);
+            cursor: progress;
+            opacity: 0.85;
+        }
+
+        .form-error {
+            color: var(--error);
+            background: var(--error-dim);
+            border: 1px solid rgba(229, 104, 90, 0.4);
+            padding: 14px 16px;
+            border-radius: 2px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .form-error[hidden] { display: none; }
+
+        .privacy {
+            font-size: 12px;
+            color: var(--faint);
+            line-height: 1.5;
+        }
+        .privacy a { color: var(--muted); }
+
+        footer {
+            padding: 24px 48px;
+            border-top: 1px solid rgba(201, 168, 76, 0.06);
+            color: var(--faint);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 720px) {
+            main { padding: 48px 20px 48px; }
+            .lede { margin-bottom: 32px; }
+            form { gap: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/msp.html">MSPs</a></li>
+            <li><a href="/functional-medicine.html">Functional Medicine</a></li>
+            <li><a href="/property-maintenance.html">Property Maintenance</a></li>
+            <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener" class="nav-cta">Book a Call</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="form-card">
+            <div class="eyebrow">Apply</div>
+            <h1>Tell us about <span class="gold">your business.</span></h1>
+            <p class="lede">Six questions, ninety seconds. If we're a fit, the next screen lets you book a 30-minute strategy call with Kashi to scope the right outreach plan.</p>
+
+            <form id="applyForm" novalidate>
+                <div class="form-error" id="formError" hidden></div>
+
+                <div class="field" data-field="firstName">
+                    <label for="firstName">First name <span class="req">*</span></label>
+                    <input id="firstName" name="firstName" type="text" required autocomplete="given-name" maxlength="100">
+                    <div class="field-error" data-error-for="firstName"></div>
+                </div>
+
+                <div class="field" data-field="email">
+                    <label for="email">Work email <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" required autocomplete="email" maxlength="254" placeholder="you@yourcompany.com">
+                    <div class="field-error" data-error-for="email"></div>
+                </div>
+
+                <div class="field" data-field="companyName">
+                    <label for="companyName">Company name <span class="req">*</span></label>
+                    <input id="companyName" name="companyName" type="text" required autocomplete="organization" maxlength="200">
+                    <div class="field-error" data-error-for="companyName"></div>
+                </div>
+
+                <div class="field" data-field="vertical">
+                    <label for="vertical">Vertical <span class="req">*</span></label>
+                    <select id="vertical" name="vertical" required>
+                        <option value="" disabled selected>Pick one…</option>
+                        <option>MSP</option>
+                        <option>Functional Medicine</option>
+                        <option>Property Maintenance</option>
+                        <option>Dental</option>
+                        <option>Life Insurance</option>
+                        <option>Mortgage Loan Officer</option>
+                        <option>Other</option>
+                    </select>
+                    <div class="field-error" data-error-for="vertical"></div>
+                </div>
+
+                <div class="field" data-field="monthlyVolumeTarget">
+                    <label for="monthlyVolumeTarget">Monthly email volume target <span class="req">*</span></label>
+                    <select id="monthlyVolumeTarget" name="monthlyVolumeTarget" required>
+                        <option value="" disabled selected>Pick one…</option>
+                        <option>Under 500</option>
+                        <option>500-2,000</option>
+                        <option>2,000-5,000</option>
+                        <option>5,000-10,000</option>
+                        <option>10,000+</option>
+                    </select>
+                    <div class="field-error" data-error-for="monthlyVolumeTarget"></div>
+                </div>
+
+                <div class="field" data-field="challenge">
+                    <label for="challenge">Biggest lead-gen challenge right now <span class="req">*</span></label>
+                    <textarea id="challenge" name="challenge" required minlength="10" maxlength="2000" rows="4" placeholder="A few sentences — what's been the hardest part of getting qualified meetings?"></textarea>
+                    <div class="field-error" data-error-for="challenge"></div>
+                </div>
+
+                <div class="submit-row">
+                    <button type="submit" id="submitBtn">Apply Now →</button>
+                    <p class="privacy">We'll only use this to follow up about your application. No newsletter, no list trades, no spam.</p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 Inception Emails. All rights reserved.</footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var CALENDLY_URL = 'https://calendly.com/kashikeefe/30min';
+
+        var form = document.getElementById('applyForm');
+        var submitBtn = document.getElementById('submitBtn');
+        var formError = document.getElementById('formError');
+
+        function clearErrors() {
+            formError.hidden = true;
+            formError.textContent = '';
+            var fields = form.querySelectorAll('.field');
+            fields.forEach(function (f) {
+                f.classList.remove('has-error');
+                var slot = f.querySelector('.field-error');
+                if (slot) slot.textContent = '';
+            });
+        }
+
+        function showFieldError(fieldName, message) {
+            var fieldEl = form.querySelector('.field[data-field="' + fieldName + '"]');
+            if (!fieldEl) {
+                showFormError(message);
+                return;
+            }
+            fieldEl.classList.add('has-error');
+            var slot = fieldEl.querySelector('.field-error');
+            if (slot) slot.textContent = message;
+            var input = fieldEl.querySelector('input, select, textarea');
+            if (input) input.focus();
+        }
+
+        function showFormError(message) {
+            formError.textContent = message;
+            formError.hidden = false;
+            formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function setSubmitting(isSubmitting) {
+            submitBtn.disabled = isSubmitting;
+            submitBtn.textContent = isSubmitting ? 'Submitting…' : 'Apply Now →';
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            clearErrors();
+
+            var payload = {
+                firstName: form.firstName.value.trim(),
+                email: form.email.value.trim(),
+                companyName: form.companyName.value.trim(),
+                vertical: form.vertical.value,
+                monthlyVolumeTarget: form.monthlyVolumeTarget.value,
+                challenge: form.challenge.value.trim(),
+            };
+
+            setSubmitting(true);
+
+            fetch('/api/apply', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload),
+            })
+            .then(function (resp) {
+                return resp.json().then(function (body) {
+                    return { status: resp.status, body: body };
+                }).catch(function () {
+                    return { status: resp.status, body: null };
+                });
+            })
+            .then(function (r) {
+                if (r.status === 200 && r.body && r.body.ok) {
+                    // Future analytics hook (Phase 8/11) — single point of success.
+                    try {
+                        window.dispatchEvent(new CustomEvent('inception:apply-submitted', {
+                            detail: { vertical: payload.vertical },
+                        }));
+                    } catch (_) {}
+                    window.location.assign(CALENDLY_URL);
+                    return;
+                }
+                setSubmitting(false);
+                if (r.body && r.body.field && r.body.error) {
+                    showFieldError(r.body.field, r.body.error);
+                } else if (r.body && r.body.error) {
+                    showFormError(r.body.error);
+                } else {
+                    showFormError('Something went wrong — try again, or email kashi@inception-emails.com.');
+                }
+            })
+            .catch(function () {
+                setSubmitting(false);
+                showFormError('Network error. Try again, or email kashi@inception-emails.com.');
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
