@@ -118,6 +118,39 @@ def apply_form():
     return send_from_directory(".", "apply.html")
 
 
+@app.route("/about")
+@app.route("/about.html")
+def about():
+    return send_from_directory(".", "about.html")
+
+
+@app.route("/pricing")
+@app.route("/pricing.html")
+def pricing():
+    return send_from_directory(".", "pricing.html")
+
+
+@app.route("/contact")
+@app.route("/contact.html")
+def contact():
+    return send_from_directory(".", "contact.html")
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    return send_from_directory(".", "sitemap.xml", mimetype="application/xml")
+
+
+@app.route("/llms.txt")
+def llms_txt():
+    return send_from_directory(".", "llms.txt", mimetype="text/plain")
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    return send_from_directory(".", "robots.txt", mimetype="text/plain")
+
+
 @app.route("/healthz")
 def healthz():
     return ("ok", 200, {"Content-Type": "text/plain"})
