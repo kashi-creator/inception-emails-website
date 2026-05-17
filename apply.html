@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply | Inception Emails</title>
-    <meta name="description" content="Apply to work with Inception Emails. Tell us about your business and we'll get on a call to scope the right outreach plan.">
+    <meta name="description" content="Tell us about your business. Nine questions, five minutes — we build your custom outreach plan before the call.">
     <!-- BEGIN: SEO/AEO/GEO substrate (auto-managed) -->
     <link rel="canonical" href="https://inception-emails.com/apply">
     <meta property="og:type" content="website">
@@ -230,12 +230,12 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            padding: 80px 24px 64px;
+            padding: 72px 24px 64px;
         }
 
         .form-card {
             width: 100%;
-            max-width: 620px;
+            max-width: 660px;
         }
 
         .eyebrow {
@@ -249,10 +249,10 @@
         h1 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
-            font-size: clamp(36px, 5vw, 52px);
+            font-size: clamp(34px, 5vw, 50px);
             line-height: 1.05;
             color: var(--white);
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
         h1 .gold { color: var(--gold); font-style: italic; }
 
@@ -260,11 +260,54 @@
             font-size: 16px;
             line-height: 1.6;
             color: var(--muted);
-            margin-bottom: 48px;
-            max-width: 540px;
+            margin-bottom: 36px;
+            max-width: 560px;
         }
 
+        /* STEPPER */
+        .stepper {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        .stepper .seg {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .stepper .bar {
+            height: 3px;
+            background: var(--faint);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .stepper .bar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stepper .seg.done .bar::after,
+        .stepper .seg.active .bar::after { width: 100%; }
+        .stepper .seg.active .bar::after { width: 50%; }
+        .stepper .lbl {
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: color 0.3s;
+        }
+        .stepper .seg.active .lbl,
+        .stepper .seg.done .lbl { color: var(--gold); }
+
         form { display: flex; flex-direction: column; gap: 22px; }
+
+        .step { display: none; flex-direction: column; gap: 22px; }
+        .step.active { display: flex; }
 
         .field { display: flex; flex-direction: column; gap: 8px; }
 
@@ -276,6 +319,19 @@
             font-weight: 500;
         }
         .field label .req { color: var(--gold); margin-left: 4px; }
+        .field label .opt {
+            color: var(--muted);
+            margin-left: 6px;
+            letter-spacing: 0.06em;
+            text-transform: none;
+            font-style: italic;
+        }
+        .field .help {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--muted);
+            margin-top: -2px;
+        }
 
         .field input,
         .field select,
@@ -299,7 +355,8 @@
             background: #FFFFFF;
             box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
         }
-        .field textarea { resize: vertical; min-height: 120px; }
+        .field textarea { resize: vertical; min-height: 110px; }
+        .field textarea.tall { min-height: 150px; }
         .field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 44px; }
         .field select option { background: var(--bg-alt); color: var(--text); }
 
@@ -313,35 +370,74 @@
             min-height: 1em;
         }
 
-        .submit-row { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+        .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+        @media (max-width: 560px) { .row-2 { grid-template-columns: 1fr; } }
 
-        button[type="submit"] {
+        /* DOORKNOB TEACHING CALLOUT */
+        .teach {
+            background: var(--gold-dim);
+            border-left: 2px solid var(--gold);
+            border-radius: 2px;
+            padding: 18px 20px;
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: var(--text);
+        }
+        .teach b { color: var(--gold-dark); }
+        .teach .head {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 19px;
+            color: var(--white);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .teach ul { margin: 8px 0 0 18px; }
+        .teach li { margin-bottom: 4px; }
+        .teach .bad { color: var(--error); }
+
+        .nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.2s, color 0.2s, transform 0.1s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .btn-next, button[type="submit"] {
             background: var(--gold);
             color: #0A0A0A;
             border: none;
-            padding: 18px 32px;
-            font-family: inherit;
-            font-size: 15px;
+            padding: 16px 34px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-            position: relative;
             box-shadow: 0 4px 14px rgba(201, 168, 76, 0.25);
         }
-        button[type="submit"]:hover:not([disabled]) {
+        .btn-next:hover:not([disabled]), button[type="submit"]:hover:not([disabled]) {
             background: var(--gold-dark);
             color: #FFFFFF;
             transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
         }
-        button[type="submit"][disabled] {
-            background: var(--gold-dark);
-            cursor: progress;
-            opacity: 0.85;
+        button[disabled] { background: var(--gold-dark); cursor: progress; opacity: 0.85; }
+        .btn-back {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--faint);
+            padding: 15px 28px;
+            font-size: 13px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
+        .btn-back:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-back[hidden] { visibility: hidden; }
 
         .form-error {
             color: var(--error);
@@ -358,8 +454,38 @@
             font-size: 12px;
             color: var(--muted);
             line-height: 1.5;
+            margin-top: 6px;
         }
-        .privacy a { color: var(--muted); }
+
+        /* SUCCESS */
+        .done-card { display: none; text-align: left; }
+        .done-card.show { display: block; }
+        .done-card .gold-line { width: 50px; height: 1px; background: var(--gold); margin: 0 0 28px; }
+        .done-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(30px, 4.5vw, 44px);
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .done-card h2 .gold { color: var(--gold); font-style: italic; }
+        .done-card p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 14px; max-width: 540px; }
+        .done-card .cta {
+            display: inline-block;
+            margin-top: 18px;
+            background: var(--gold);
+            color: #0A0A0A;
+            text-decoration: none;
+            padding: 16px 36px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.25);
+        }
+        .done-card .cta:hover { background: var(--gold-dark); color: #FFF; }
 
         footer {
             padding: 24px 48px;
@@ -370,8 +496,9 @@
         }
 
         @media (max-width: 720px) {
-            main { padding: 48px 20px 48px; }
-            .lede { margin-bottom: 32px; }
+            main { padding: 44px 20px 48px; }
+            .lede { margin-bottom: 28px; }
+            .stepper { margin-bottom: 30px; }
             form { gap: 18px; }
         }
     </style>
@@ -398,70 +525,153 @@
 
     <main>
         <div class="form-card">
-            <div class="eyebrow">Apply</div>
-            <h1>Tell us about <span class="gold">your business.</span></h1>
-            <p class="lede">Six questions, ninety seconds. If we're a fit, the next screen lets you book a 30-minute strategy call with Kashi to scope the right outreach plan.</p>
+            <div id="formView">
+                <div class="eyebrow">Apply</div>
+                <h1>Tell us about <span class="gold">your business.</span></h1>
+                <p class="lede">Nine questions, about five minutes. We use this to build a custom outreach plan <em>before</em> your strategy call — so the call is spent deciding, not interviewing.</p>
 
-            <form id="applyForm" novalidate>
-                <div class="form-error" id="formError" hidden></div>
-
-                <div class="field" data-field="firstName">
-                    <label for="firstName">First name <span class="req">*</span></label>
-                    <input id="firstName" name="firstName" type="text" required autocomplete="given-name" maxlength="100">
-                    <div class="field-error" data-error-for="firstName"></div>
+                <div class="stepper" id="stepper">
+                    <div class="seg" data-seg="0"><div class="bar"></div><div class="lbl">Who &amp; What</div></div>
+                    <div class="seg" data-seg="1"><div class="bar"></div><div class="lbl">Offer &amp; Doorknob</div></div>
+                    <div class="seg" data-seg="2"><div class="bar"></div><div class="lbl">Voice &amp; Proof</div></div>
                 </div>
 
-                <div class="field" data-field="email">
-                    <label for="email">Work email <span class="req">*</span></label>
-                    <input id="email" name="email" type="email" required autocomplete="email" maxlength="254" placeholder="you@yourcompany.com">
-                    <div class="field-error" data-error-for="email"></div>
-                </div>
+                <form id="applyForm" novalidate>
+                    <div class="form-error" id="formError" hidden></div>
 
-                <div class="field" data-field="companyName">
-                    <label for="companyName">Company name <span class="req">*</span></label>
-                    <input id="companyName" name="companyName" type="text" required autocomplete="organization" maxlength="200">
-                    <div class="field-error" data-error-for="companyName"></div>
-                </div>
+                    <!-- STEP 1 -->
+                    <div class="step" data-step="0">
+                        <div class="row-2">
+                            <div class="field" data-field="name">
+                                <label for="name">Your name <span class="req">*</span></label>
+                                <input id="name" name="name" type="text" autocomplete="name" maxlength="100">
+                                <div class="field-error" data-error-for="name"></div>
+                            </div>
+                            <div class="field" data-field="email">
+                                <label for="email">Work email <span class="req">*</span></label>
+                                <input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@yourcompany.com">
+                                <div class="field-error" data-error-for="email"></div>
+                            </div>
+                        </div>
+                        <div class="field" data-field="email-help" style="margin-top:-10px;gap:0;">
+                            <div class="help">So we can send your custom plan back. Use your work email — we work with businesses, not individuals.</div>
+                        </div>
 
-                <div class="field" data-field="vertical">
-                    <label for="vertical">Vertical <span class="req">*</span></label>
-                    <select id="vertical" name="vertical" required>
-                        <option value="" disabled selected>Pick one…</option>
-                        <option>MSP</option>
-                        <option>Functional Medicine</option>
-                        <option>Property Maintenance</option>
-                        <option>Dental</option>
-                        <option>Life Insurance</option>
-                        <option>Mortgage Loan Officer</option>
-                        <option>Other</option>
-                    </select>
-                    <div class="field-error" data-error-for="vertical"></div>
-                </div>
+                        <div class="row-2">
+                            <div class="field" data-field="company">
+                                <label for="company">Company / brand <span class="req">*</span></label>
+                                <input id="company" name="company" type="text" autocomplete="organization" maxlength="200">
+                                <div class="field-error" data-error-for="company"></div>
+                            </div>
+                            <div class="field" data-field="website">
+                                <label for="website">Website <span class="req">*</span></label>
+                                <input id="website" name="website" type="text" autocomplete="url" maxlength="300" placeholder="yourcompany.com">
+                                <div class="field-error" data-error-for="website"></div>
+                            </div>
+                        </div>
 
-                <div class="field" data-field="monthlyVolumeTarget">
-                    <label for="monthlyVolumeTarget">Monthly email volume target <span class="req">*</span></label>
-                    <select id="monthlyVolumeTarget" name="monthlyVolumeTarget" required>
-                        <option value="" disabled selected>Pick one…</option>
-                        <option>Under 500</option>
-                        <option>500-2,000</option>
-                        <option>2,000-5,000</option>
-                        <option>5,000-10,000</option>
-                        <option>10,000+</option>
-                    </select>
-                    <div class="field-error" data-error-for="monthlyVolumeTarget"></div>
-                </div>
+                        <div class="field" data-field="summary">
+                            <label for="summary">What you do &amp; the transformation <span class="req">*</span></label>
+                            <div class="help">2–3 sentences: what you do, who for, and where the customer is the day <em>before</em> they buy vs. 90 days after. The machinery, not the tagline.</div>
+                            <textarea id="summary" name="summary" class="tall" maxlength="2000" placeholder="We help [who] go from [before state] to [after state] by [the actual mechanism you use]."></textarea>
+                            <div class="field-error" data-error-for="summary"></div>
+                        </div>
 
-                <div class="field" data-field="challenge">
-                    <label for="challenge">Biggest lead-gen challenge right now <span class="req">*</span></label>
-                    <textarea id="challenge" name="challenge" required minlength="10" maxlength="2000" rows="4" placeholder="A few sentences — what's been the hardest part of getting qualified meetings?"></textarea>
-                    <div class="field-error" data-error-for="challenge"></div>
-                </div>
+                        <div class="nav-row">
+                            <button type="button" class="btn-back" data-back hidden>← Back</button>
+                            <button type="button" class="btn-next" data-next>Continue →</button>
+                        </div>
+                    </div>
 
-                <div class="submit-row">
-                    <button type="submit" id="submitBtn">Apply Now →</button>
-                    <p class="privacy">We'll only use this to follow up about your application. No newsletter, no list trades, no spam.</p>
-                </div>
-            </form>
+                    <!-- STEP 2 -->
+                    <div class="step" data-step="1">
+                        <div class="field" data-field="offer">
+                            <label for="offer">What they buy &amp; what it costs <span class="req">*</span></label>
+                            <div class="help">Your main paid offer in one line, and the price. The exact number powers every ROI figure in your plan — a range makes it weaker.</div>
+                            <textarea id="offer" name="offer" maxlength="1500" placeholder="e.g. 12-week done-with-you program, $5,000. Payment plan available at $1,750/mo."></textarea>
+                            <div class="field-error" data-error-for="offer"></div>
+                        </div>
+
+                        <div class="teach">
+                            <span class="head">Your "doorknob" — read this first</span>
+                            Cold email dies on <i>"book a call"</i> and wins on <i>"reply and I'll send you something genuinely useful, no call."</i> That useful thing is your <b>doorknob</b>: something a stranger gets <b>without talking to sales</b> that's valuable on its own and naturally leads to your paid offer.
+                            <ul>
+                                <li>Consumable in ~10 min, little/no human bottleneck (a tool, audit, assessment, teardown, sample, calculator)</li>
+                                <li>Valuable even if they never buy — and shows off your actual mechanism</li>
+                                <li><span class="bad">Not</span> a demo, consult, quote, or "free strategy call" — those are sales calls in disguise</li>
+                            </ul>
+                        </div>
+
+                        <div class="field" data-field="doorknob">
+                            <label for="doorknob">Your doorknob <span class="req">*</span></label>
+                            <textarea id="doorknob" name="doorknob" maxlength="1500" placeholder="Describe what a stranger gets, and how long it takes them. No idea yet? Write &quot;need help&quot; — we'll design one on the call."></textarea>
+                            <div class="field-error" data-error-for="doorknob"></div>
+                        </div>
+
+                        <div class="field" data-field="buyer">
+                            <label for="buyer">Best customer &amp; their 9pm frustration <span class="req">*</span></label>
+                            <div class="help">Who's your single best customer, and what's eating them <em>before</em> they find you? Paste their exact words from reviews/calls/DMs if you have them — and what just happened in their world that makes them ready now.</div>
+                            <textarea id="buyer" name="buyer" class="tall" maxlength="2000" placeholder="Best customer: [title / company type / life stage]. The thing keeping them up: &quot;...&quot;. What makes them ready now: [trigger]."></textarea>
+                            <div class="field-error" data-error-for="buyer"></div>
+                        </div>
+
+                        <div class="nav-row">
+                            <button type="button" class="btn-back" data-back>← Back</button>
+                            <button type="button" class="btn-next" data-next>Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 -->
+                    <div class="step" data-step="2">
+                        <div class="field" data-field="voice">
+                            <label for="voice">Where we can hear your voice <span class="req">*</span></label>
+                            <div class="help">1–3 links: an essay, a podcast episode, a long post. Your emails are written in your voice, trained on these.</div>
+                            <textarea id="voice" name="voice" maxlength="1500" placeholder="https://...&#10;https://..."></textarea>
+                            <div class="field-error" data-error-for="voice"></div>
+                        </div>
+
+                        <div class="field" data-field="tone">
+                            <label for="tone">Desired tone <span class="req">*</span></label>
+                            <select id="tone" name="tone">
+                                <option value="" disabled selected>Pick one…</option>
+                                <option>Direct</option>
+                                <option>Conversational</option>
+                                <option>Challenger</option>
+                                <option>Data-driven</option>
+                            </select>
+                            <div class="field-error" data-error-for="tone"></div>
+                        </div>
+
+                        <div class="field" data-field="proof">
+                            <label for="proof">Best provable result <span class="opt">— optional</span></label>
+                            <div class="help">One named result with a number if possible. We only use proof we can state exactly — vague proof gets cut.</div>
+                            <textarea id="proof" name="proof" maxlength="1500" placeholder="e.g. Took [named client] from X to Y in Z weeks."></textarea>
+                            <div class="field-error" data-error-for="proof"></div>
+                        </div>
+
+                        <div class="field" data-field="notes">
+                            <label for="notes">Anything we must NOT say, or else we should know <span class="opt">— optional</span></label>
+                            <div class="help">Banned phrases, hard nos, deal-breakers, compliance constraints.</div>
+                            <textarea id="notes" name="notes" maxlength="1500" placeholder="Never say…  /  Can't claim…  /  Heads up that…"></textarea>
+                            <div class="field-error" data-error-for="notes"></div>
+                        </div>
+
+                        <div class="nav-row">
+                            <button type="button" class="btn-back" data-back>← Back</button>
+                            <button type="submit" id="submitBtn">Submit &amp; Book Call →</button>
+                        </div>
+                        <p class="privacy">We'll only use this to build your plan and follow up about your application. No newsletter, no list trades, no spam.</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="done-card" id="doneView">
+                <div class="gold-line"></div>
+                <h2>Got it. We're <span class="gold">building your plan.</span></h2>
+                <p>Your answers are in. We're turning them into a custom cold-outreach pitch — your ICP, your hooks, your funnel math — so your strategy call is spent deciding, not interviewing.</p>
+                <p>Last step: lock in the 30-minute call with Kashi.</p>
+                <a class="cta" id="bookCta" href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener">Book your strategy call →</a>
+            </div>
         </div>
     </main>
 
@@ -476,28 +686,51 @@
         var form = document.getElementById('applyForm');
         var submitBtn = document.getElementById('submitBtn');
         var formError = document.getElementById('formError');
+        var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+        var segs = Array.prototype.slice.call(document.querySelectorAll('#stepper .seg'));
+        var current = 0;
+
+        // Required fields per step + minimum lengths (mirrors server validation).
+        var STEP_FIELDS = [
+            [
+                { n: 'name', min: 1, label: 'your name' },
+                { n: 'email', min: 3, label: 'a valid work email', email: true },
+                { n: 'company', min: 1, label: 'your company' },
+                { n: 'website', min: 3, label: 'your website' },
+                { n: 'summary', min: 20, label: 'what you do (a couple sentences)' }
+            ],
+            [
+                { n: 'offer', min: 10, label: 'your offer and price' },
+                { n: 'doorknob', min: 5, label: 'your doorknob (or "need help")' },
+                { n: 'buyer', min: 20, label: 'your best customer and their frustration' }
+            ],
+            [
+                { n: 'voice', min: 5, label: 'a voice sample link' },
+                { n: 'tone', min: 1, label: 'a tone' }
+            ]
+        ];
+
+        var FREE_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','icloud.com','aol.com','proton.me','pm.me','msn.com','live.com'];
+
+        function fieldEl(name) { return form.querySelector('.field[data-field="' + name + '"]'); }
 
         function clearErrors() {
             formError.hidden = true;
             formError.textContent = '';
-            var fields = form.querySelectorAll('.field');
-            fields.forEach(function (f) {
+            form.querySelectorAll('.field').forEach(function (f) {
                 f.classList.remove('has-error');
                 var slot = f.querySelector('.field-error');
                 if (slot) slot.textContent = '';
             });
         }
 
-        function showFieldError(fieldName, message) {
-            var fieldEl = form.querySelector('.field[data-field="' + fieldName + '"]');
-            if (!fieldEl) {
-                showFormError(message);
-                return;
-            }
-            fieldEl.classList.add('has-error');
-            var slot = fieldEl.querySelector('.field-error');
+        function showFieldError(name, message) {
+            var el = fieldEl(name);
+            if (!el) { showFormError(message); return; }
+            el.classList.add('has-error');
+            var slot = el.querySelector('.field-error');
             if (slot) slot.textContent = message;
-            var input = fieldEl.querySelector('input, select, textarea');
+            var input = el.querySelector('input, select, textarea');
             if (input) input.focus();
         }
 
@@ -507,22 +740,81 @@
             formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        function setSubmitting(isSubmitting) {
-            submitBtn.disabled = isSubmitting;
-            submitBtn.textContent = isSubmitting ? 'Submitting…' : 'Apply Now →';
+        function validateStep(idx) {
+            var specs = STEP_FIELDS[idx] || [];
+            for (var i = 0; i < specs.length; i++) {
+                var s = specs[i];
+                var input = form.elements[s.n];
+                var val = input ? String(input.value || '').trim() : '';
+                if (val.length < s.min) {
+                    showFieldError(s.n, 'Please add ' + s.label + '.');
+                    return false;
+                }
+                if (s.email) {
+                    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val)) {
+                        showFieldError(s.n, 'Please enter a valid email.');
+                        return false;
+                    }
+                    var dom = val.split('@')[1].toLowerCase();
+                    if (FREE_DOMAINS.indexOf(dom) !== -1) {
+                        showFieldError(s.n, 'Please use your work email — we work with businesses, not individuals.');
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function render() {
+            steps.forEach(function (st, i) { st.classList.toggle('active', i === current); });
+            segs.forEach(function (sg, i) {
+                sg.classList.toggle('active', i === current);
+                sg.classList.toggle('done', i < current);
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        form.addEventListener('click', function (e) {
+            var t = e.target;
+            if (t.matches('[data-next]')) {
+                clearErrors();
+                if (!validateStep(current)) return;
+                if (current < steps.length - 1) { current++; render(); }
+            } else if (t.matches('[data-back]')) {
+                clearErrors();
+                if (current > 0) { current--; render(); }
+            }
+        });
+
+        function setSubmitting(on) {
+            submitBtn.disabled = on;
+            submitBtn.textContent = on ? 'Submitting…' : 'Submit & Book Call →';
         }
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             clearErrors();
+            // Validate every step before sending.
+            for (var i = 0; i < steps.length; i++) {
+                if (!validateStep(i)) {
+                    if (i !== current) { current = i; render(); }
+                    return;
+                }
+            }
 
             var payload = {
-                firstName: form.firstName.value.trim(),
+                name: form.name.value.trim(),
                 email: form.email.value.trim(),
-                companyName: form.companyName.value.trim(),
-                vertical: form.vertical.value,
-                monthlyVolumeTarget: form.monthlyVolumeTarget.value,
-                challenge: form.challenge.value.trim(),
+                company: form.company.value.trim(),
+                website: form.website.value.trim(),
+                summary: form.summary.value.trim(),
+                offer: form.offer.value.trim(),
+                doorknob: form.doorknob.value.trim(),
+                buyer: form.buyer.value.trim(),
+                voice: form.voice.value.trim(),
+                tone: form.tone.value,
+                proof: form.proof.value.trim(),
+                notes: form.notes.value.trim()
             };
 
             setSubmitting(true);
@@ -530,28 +822,35 @@
             fetch('/api/apply', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(payload),
+                body: JSON.stringify(payload)
             })
             .then(function (resp) {
-                return resp.json().then(function (body) {
-                    return { status: resp.status, body: body };
-                }).catch(function () {
-                    return { status: resp.status, body: null };
-                });
+                return resp.json().then(function (b) { return { status: resp.status, body: b }; })
+                    .catch(function () { return { status: resp.status, body: null }; });
             })
             .then(function (r) {
                 if (r.status === 200 && r.body && r.body.ok) {
-                    // Future analytics hook (Phase 8/11) — single point of success.
                     try {
-                        window.dispatchEvent(new CustomEvent('inception:apply-submitted', {
-                            detail: { vertical: payload.vertical },
-                        }));
+                        window.dispatchEvent(new CustomEvent('inception:apply-submitted', { detail: { company: payload.company } }));
                     } catch (_) {}
-                    window.location.assign(CALENDLY_URL);
+                    document.getElementById('formView').style.display = 'none';
+                    document.getElementById('doneView').classList.add('show');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setTimeout(function () {
+                        try { window.location.assign(CALENDLY_URL); } catch (_) {}
+                    }, 2600);
                     return;
                 }
                 setSubmitting(false);
                 if (r.body && r.body.field && r.body.error) {
+                    // Jump to the step that owns the bad field.
+                    for (var s = 0; s < STEP_FIELDS.length; s++) {
+                        if (STEP_FIELDS[s].some(function (f) { return f.n === r.body.field; }) ||
+                            (r.body.field === 'proof' || r.body.field === 'notes') && s === 2) {
+                            if (s !== current) { current = s; render(); }
+                            break;
+                        }
+                    }
                     showFieldError(r.body.field, r.body.error);
                 } else if (r.body && r.body.error) {
                     showFormError(r.body.error);
@@ -564,6 +863,8 @@
                 showFormError('Network error. Try again, or email kashi@inception-emails.com.');
             });
         });
+
+        render();
     })();
     </script>
 </body>

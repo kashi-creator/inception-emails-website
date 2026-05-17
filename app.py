@@ -4,10 +4,13 @@ import logging
 import os
 import re
 import time
+from pathlib import Path
 from typing import Any
 
+import requests
 from flask import Flask, jsonify, request, send_from_directory
 
+from brief import artifact_basename, build_deck_prompt, build_intake_brief
 from ghl_client import GhlClient, GhlClientError
 
 app = Flask(__name__, static_folder=".", static_url_path="")
@@ -20,26 +23,10 @@ log = logging.getLogger("inception-emails-site")
 
 GHL_LOCATION_ID = "oPTc9Dv3gSsB3uQmYdBd"
 
-CF_VERTICAL = "2PvVC82Z2zCscfwBabiV"
-CF_MONTHLY_VOLUME_TARGET = "1Fy2glO1vMD6yhhFp21R"
-
-VERTICAL_OPTIONS: dict[str, str] = {
-    "MSP": "MSP",
-    "Functional Medicine": "Functional Medicine",
-    "Property Maintenance": "Property Maintenance",
-    "Dental": "Dental",
-    "Life Insurance": "Life Insurance",
-    "Mortgage Loan Officer": "Mortgage",
-    "Other": "Other",
-}
-
-VOLUME_BUCKETS: dict[str, int] = {
-    "Under 500": 250,
-    "500-2,000": 1250,
-    "2,000-5,000": 3500,
-    "5,000-10,000": 7500,
-    "10,000+": 15000,
-}
+# Where the deterministic Intake Brief + one-click deck prompt are written for
+# local runs. On ephemeral hosts this is best-effort; GHL note is the durable
+# store. Never let a read-only FS break a submission.
+BRIEFS_DIR = Path(os.environ.get("BRIEFS_DIR", "briefs"))
 
 FREE_EMAIL_DOMAINS: frozenset[str] = frozenset(
     {
@@ -56,7 +43,27 @@ FREE_EMAIL_DOMAINS: frozenset[str] = frozenset(
     }
 )
 
+TONE_OPTIONS: frozenset[str] = frozenset(
+    {"Direct", "Conversational", "Challenger", "Data-driven"}
+)
+
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+
+# field -> (label, required, min_len, max_len)
+FORM_SCHEMA: dict[str, tuple[str, bool, int, int]] = {
+    "name": ("Your name", True, 1, 100),
+    "email": ("Work email", True, 3, 254),
+    "company": ("Company / brand", True, 1, 200),
+    "website": ("Website", True, 3, 300),
+    "summary": ("What you do & the transformation", True, 20, 2000),
+    "offer": ("Offer & price", True, 10, 1500),
+    "doorknob": ("Your doorknob", True, 5, 1500),
+    "buyer": ("Best customer & their frustration", True, 20, 2000),
+    "voice": ("Voice samples", True, 5, 1500),
+    "tone": ("Desired tone", True, 1, 40),
+    "proof": ("Best provable result", False, 0, 1500),
+    "notes": ("Constraints / hard-nos", False, 0, 1500),
+}
 
 _ghl_singleton: GhlClient | None = None
 
@@ -168,45 +175,78 @@ def _validate(payload: Any) -> tuple[dict[str, Any] | None, tuple[Any, int] | No
     if not isinstance(payload, dict):
         return None, _err("_root", "Request body must be JSON object.")
 
-    first_name = _norm(payload.get("firstName"))
-    email = _norm(payload.get("email")).lower()
-    company_name = _norm(payload.get("companyName"))
-    vertical_raw = _norm(payload.get("vertical"))
-    volume_raw = _norm(payload.get("monthlyVolumeTarget"))
-    challenge = _norm(payload.get("challenge"))
+    clean: dict[str, Any] = {}
+    for field, (label, required, min_len, max_len) in FORM_SCHEMA.items():
+        value = _norm(payload.get(field))
+        if not value:
+            if required:
+                return None, _err(field, f"{label} is required.")
+            clean[field] = ""
+            continue
+        if len(value) > max_len:
+            return None, _err(field, f"{label} is too long (max {max_len} chars).")
+        if len(value) < min_len:
+            return None, _err(
+                field, f"{label} needs a little more detail (min {min_len} chars)."
+            )
+        clean[field] = value
 
-    if not first_name or len(first_name) > 100:
-        return None, _err("firstName", "First name is required.")
-    if not email or len(email) > 254 or not EMAIL_RE.match(email):
-        return None, _err("email", "A valid email is required.")
+    email = clean["email"].lower()
+    if not EMAIL_RE.match(email):
+        return None, _err("email", "A valid work email is required.")
     domain = email.rsplit("@", 1)[-1]
     if domain in FREE_EMAIL_DOMAINS:
         return None, _err(
             "email",
             "Please use your work email — we work with businesses, not individuals.",
         )
-    if not company_name or len(company_name) > 200:
-        return None, _err("companyName", "Company name is required.")
-    if vertical_raw not in VERTICAL_OPTIONS:
-        return None, _err("vertical", "Please pick a vertical from the list.")
-    if volume_raw not in VOLUME_BUCKETS:
-        return None, _err("monthlyVolumeTarget", "Please pick a monthly volume from the list.")
-    if not challenge or not (10 <= len(challenge) <= 2000):
-        return None, _err("challenge", "Please share a few sentences (10–2000 chars).")
+    clean["email"] = email
 
-    return (
-        {
-            "firstName": first_name,
-            "email": email,
-            "companyName": company_name,
-            "vertical": VERTICAL_OPTIONS[vertical_raw],
-            "monthlyVolumeTarget": VOLUME_BUCKETS[volume_raw],
-            "verticalRaw": vertical_raw,
-            "volumeRaw": volume_raw,
-            "challenge": challenge,
-        },
-        None,
-    )
+    if clean["tone"] not in TONE_OPTIONS:
+        return None, _err("tone", "Please pick a tone from the list.")
+
+    return clean, None
+
+
+def _split_name(full: str) -> tuple[str, str]:
+    parts = full.split()
+    if not parts:
+        return "", ""
+    if len(parts) == 1:
+        return parts[0], ""
+    return parts[0], " ".join(parts[1:])
+
+
+def _persist_local(basename: str, brief_md: str, deck_prompt: str) -> None:
+    """Best-effort local artifact write. GHL note is the durable store —
+    a read-only / ephemeral FS must never break a submission."""
+    try:
+        BRIEFS_DIR.mkdir(parents=True, exist_ok=True)
+        (BRIEFS_DIR / f"{basename}-intake-brief.md").write_text(
+            brief_md, encoding="utf-8"
+        )
+        (BRIEFS_DIR / f"{basename}-deck-prompt.md").write_text(
+            deck_prompt, encoding="utf-8"
+        )
+    except OSError as exc:
+        log.info("brief local persist skipped: %s", exc.__class__.__name__)
+
+
+def _notify_telegram(text: str) -> None:
+    """Best-effort 'boom' ping to the operator. Fully optional — disabled if
+    env not set, and any failure is swallowed so it can never break submit."""
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID_KASHI")
+    if not token or not chat_id:
+        return
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": text[:3900], "disable_web_page_preview": True},
+            timeout=5.0,
+        )
+    except requests.RequestException as exc:
+        log.info("telegram notify failed: %s", exc.__class__.__name__)
 
 
 @app.route("/api/apply", methods=["POST"])
@@ -224,6 +264,12 @@ def api_apply():
         return body, status
 
     domain = clean["email"].rsplit("@", 1)[-1]
+    first_name, last_name = _split_name(clean["name"])
+
+    brief_md = build_intake_brief(clean)
+    deck_prompt = build_deck_prompt(clean)
+    basename = artifact_basename(clean)
+    _persist_local(basename, brief_md, deck_prompt)
 
     try:
         ghl = _ghl()
@@ -234,23 +280,16 @@ def api_apply():
     try:
         result = ghl.upsert_contact(
             email=clean["email"],
-            first_name=clean["firstName"],
-            company_name=clean["companyName"],
+            first_name=first_name,
+            last_name=last_name,
+            company_name=clean["company"],
             source_tag="src:website-form",
         )
         contact_id = result["contact_id"]
         ghl.add_tags(contact_id, ["stage:lead"])
-        ghl.set_custom_fields(
-            contact_id,
-            [
-                {"id": CF_VERTICAL, "value": clean["vertical"]},
-                {"id": CF_MONTHLY_VOLUME_TARGET, "value": clean["monthlyVolumeTarget"]},
-            ],
-        )
-        ghl.add_note(
-            contact_id,
-            f"Apply form — biggest lead-gen challenge:\n\n{clean['challenge']}",
-        )
+        # The full Intake Brief (incl. the one-click deck prompt) lands on the
+        # contact as a note — durable, and where the operator already lives.
+        ghl.add_note(contact_id, brief_md)
     except GhlClientError as exc:
         log.error(
             "apply_submit ghl_error domain=%s fields=%s",
@@ -262,12 +301,18 @@ def api_apply():
         log.exception("apply_submit unexpected error domain=%s", domain)
         return jsonify({"ok": False, "error": "Could not submit. Try again shortly."}), 500
 
+    _notify_telegram(
+        f"🎯 New /apply intake — {clean['company']}\n"
+        f"{clean['name']} · {clean['email']}\n"
+        f"Offer: {clean['offer'][:120]}\n"
+        f"Intake Brief + one-click deck prompt are on the GHL contact note."
+    )
+
     latency_ms = int((time.monotonic() - started) * 1000)
     log.info(
-        "apply_submit ok domain=%s vertical=%s volume=%s dnc=%s latency_ms=%s",
+        "apply_submit ok domain=%s company=%s dnc=%s latency_ms=%s",
         domain,
-        clean["vertical"],
-        clean["monthlyVolumeTarget"],
+        clean["company"][:40],
         result.get("dnc"),
         latency_ms,
     )
