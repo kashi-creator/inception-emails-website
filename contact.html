@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Inception Emails | Book a Strategy Call</title>
-    <meta name="description" content="Book a 30-minute strategy call with Inception Emails. Custom lead projections for your industry. Cold email outreach for MSPs, dental, functional medicine, life insurance, mortgage, property maintenance.">
+    <title>Contact Inception Emails | Book a Call About Your MSP</title>
+    <meta name="description" content="Book a 30-minute call. You'll see the 50 companies we'd target in your city, the 3 emails we'd send them, and the cost per held meeting.">
     <!-- BEGIN: SEO/AEO/GEO substrate (auto-managed) -->
     <link rel="canonical" href="https://inception-emails.com/contact">
     <meta property="og:type" content="website">
@@ -13,10 +13,10 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@InceptionEmails">
-    <meta property="og:title" content="Contact Inception Emails | Book a Strategy Call">
-    <meta name="twitter:title" content="Contact Inception Emails | Book a Strategy Call">
-    <meta property="og:description" content="Book a 30-minute strategy call with Inception Emails. Custom lead projections for your industry. Cold email outreach for MSPs, dental, functional medicine, life insurance, mortgage, property maintenance.">
-    <meta name="twitter:description" content="Book a 30-minute strategy call with Inception Emails. Custom lead projections for your industry. Cold email outreach for MSPs, dental, functional medicine, life insurance, mortgage, property maintenance.">
+    <meta property="og:title" content="Contact Inception Emails | Book a Call About Your MSP">
+    <meta name="twitter:title" content="Contact Inception Emails | Book a Call About Your MSP">
+    <meta property="og:description" content="Book a 30-minute call. You'll see the 50 companies we'd target in your city, the 3 emails we'd send them, and the cost per held meeting.">
+    <meta name="twitter:description" content="Book a 30-minute call. You'll see the 50 companies we'd target in your city, the 3 emails we'd send them, and the cost per held meeting.">
     <meta property="og:image" content="https://inception-emails.com/static/og-default.png">
     <meta name="twitter:image" content="https://inception-emails.com/static/og-default.png">
     <script type="application/ld+json">
@@ -27,7 +27,7 @@
   "name": "Inception Emails",
   "url": "https://inception-emails.com",
   "logo": "https://inception-emails.com/static/logo.png",
-  "description": "AI-powered cold email outreach for B2B service businesses. 50M+ emails delivered, 11% average reply rate, 340% average client ROI, $15-40 per qualified lead.",
+  "description": "Done-for-you outbound email for US managed service providers (MSPs). We build and verify the prospect list, send from separate domains so the MSP's primary domain and Microsoft 365 tenant never send, handle replies, and book qualified meetings with decision-makers on the owner's calendar.",
   "founder": {
     "@type": "Person",
     "@id": "https://inception-emails.com/about#kashi"
@@ -41,11 +41,11 @@
   },
   "areaServed": "United States",
   "knowsAbout": [
-    "Cold Email Outreach",
-    "B2B Lead Generation",
-    "AI-Powered Email Marketing",
-    "Outbound Sales",
-    "Email Deliverability"
+    "Outbound email for managed service providers",
+    "MSP new client acquisition",
+    "Email deliverability",
+    "SPF, DKIM and DMARC",
+    "Sending domain warmup"
   ]
 }
     </script>
@@ -56,7 +56,7 @@
   "@id": "https://inception-emails.com/#website",
   "url": "https://inception-emails.com",
   "name": "Inception Emails",
-  "description": "AI-Powered Cold Email Outreach",
+  "description": "New logos for MSPs, without the owner becoming a salesperson.",
   "publisher": {
     "@id": "https://inception-emails.com/#organization"
   },
@@ -1296,24 +1296,45 @@
             margin-top: 0.5rem;
         }
     </style>
+    <style>
+        /* MSP rewrite additions */
+        .content-page .btn-gold {
+            display: inline-block;
+            padding: 0.9rem 1.6rem;
+            background: var(--gold);
+            color: var(--white);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 400;
+            margin: 0.4rem 0.8rem 0.4rem 0;
+        }
+        .content-page .btn-outline {
+            display: inline-block;
+            padding: 0.9rem 1.6rem;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 400;
+            margin: 0.4rem 0;
+        }
+        .content-page .pricing-card .term { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .content-page .note { font-size: 0.85rem; color: var(--muted); }
+
+        /* MSP nav: five items need a tighter gap between tablet and laptop widths */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .nav-links { gap: 1.4rem; }
+        }
+    </style>
 </head>
 <body>
     <nav>
         <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
         <ul class="nav-links" id="navLinks">
-            <li class="nav-dropdown">
-                <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');">Industries</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/msp.html" onclick="closeNav()">MSPs</a></li>
-                    <li><a href="/dental.html" onclick="closeNav()">Dental</a></li>
-                    <li><a href="/functional-medicine.html" onclick="closeNav()">Functional Medicine</a></li>
-                    <li><a href="/life-insurance.html" onclick="closeNav()">Life Insurance</a></li>
-                    <li><a href="/mortgage.html" onclick="closeNav()">Mortgage</a></li>
-                    <li><a href="/property-maintenance.html" onclick="closeNav()">Property Maintenance</a></li>
-                </ul>
-            </li>
-            <li><a href="/apply" onclick="closeNav()">Apply</a></li>
-            <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" class="nav-cta">Book a Call</a></li>
+            <li><a href="/pricing" onclick="closeNav()">How It Works &amp; Pricing</a></li>
+            <li><a href="/about" onclick="closeNav()">About</a></li>
+            <li><a href="/contact" onclick="closeNav()">Contact</a></li>
+            <li><a href="/learn-more" class="nav-cta" onclick="closeNav()">Free 50-Company List</a></li>
         </ul>
         <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -1322,47 +1343,43 @@
 
     <main class="content-page">
         <h1>Contact</h1>
-        <p class="subtitle">The fastest way to reach us is to book a strategy call. We will scope a custom lead-generation plan for your business in 30 minutes.</p>
+        <p class="subtitle">The easiest way to reach us is a 30-minute call with Kashi.</p>
 
         <div class="contact-info">
-            <h2 style="margin-top: 0;">Book a Strategy Call</h2>
-            <p>30 minutes. Custom lead projections for your industry. No commitment.</p>
-            <p style="margin-top: 1rem;"><a href="https://calendly.com/kashikeefe/30min" target="_blank" style="display: inline-block; padding: 0.9rem 1.6rem; background: var(--gold); color: var(--white); border-radius: 8px; text-decoration: none; font-weight: 400;">Book Now →</a></p>
+            <h2 style="margin-top: 0;">Book a call</h2>
+            <p>30 minutes. Bring your questions, and your business partner if you have one.</p>
+            <p style="margin-top: 1rem;"><a href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener" class="btn-gold">Book a call &rarr;</a></p>
         </div>
 
-        <h2>Apply to work with us</h2>
-        <p>Prefer to share details first? Use the application form — we will review your application and reach out within 1 business day if it is a fit.</p>
-        <p><a href="/apply">Apply here →</a></p>
-
-        <h2>For partners + press</h2>
-        <p>If you are a podcast host, journalist, or partner interested in a quote, interview, or collaboration on cold email or AI outbound, reach Kashi directly through the strategy-call link above and mention "press" in the note field.</p>
-
-        <h2>Industries we serve</h2>
+        <h2>What you'll see on the call</h2>
         <ul>
-            <li><a href="/msp">Managed Service Providers (MSPs)</a></li>
-            <li><a href="/dental">Dental Practices</a></li>
-            <li><a href="/functional-medicine">Functional Medicine Clinics</a></li>
-            <li><a href="/life-insurance">Life Insurance Agents</a></li>
-            <li><a href="/mortgage">Mortgage Brokers</a></li>
-            <li><a href="/property-maintenance">Property Maintenance Companies</a></li>
+            <li><strong>The 50 companies we'd target in your city</strong>, picked to match the clients you already like serving.</li>
+            <li><strong>The 3 emails we'd send them</strong>, so you can judge the tone before anything goes out.</li>
+            <li><strong>The cost per held meeting</strong>: what a meeting that actually happens would cost you, quoted for your market.</li>
         </ul>
+        <p>Then you decide. Nothing to sign on the call.</p>
+
+        <h2>Prefer to start with the list?</h2>
+        <p>Answer a few questions about your MSP and we'll have your 50 companies ready before we talk.</p>
+        <p><a href="/learn-more">Get the 50 companies we'd target in your city &rarr;</a></p>
+
+        <h2>Partners and press</h2>
+        <p>For a podcast, article or partnership about outbound for MSPs, book a call through the link above and mention "press" in the notes.</p>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
-                <p>AI-Powered Cold Email Outreach</p>
+                <p>New logos for MSPs, without the selling</p>
             </div>
             <ul class="footer-links">
-                <li><a href="/msp.html">MSPs</a></li>
-                <li><a href="/dental.html">Dental</a></li>
-                <li><a href="/functional-medicine.html">Functional Medicine</a></li>
-                <li><a href="/life-insurance.html">Life Insurance</a></li>
-                <li><a href="/mortgage.html">Mortgage</a></li>
-                <li><a href="/property-maintenance.html">Property Maintenance</a></li>
-                <li><a href="/apply">Apply</a></li>
-                <li><a href="https://calendly.com/kashikeefe/30min" target="_blank">Book a Call</a></li>
+                <li><a href="/pricing">How It Works &amp; Pricing</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/learn-more">Free 50-Company List</a></li>
+                <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener">Book a Call</a></li>
             </ul>
             <div class="footer-copy">&copy; 2026 Inception Emails. All rights reserved.</div>
         </div>

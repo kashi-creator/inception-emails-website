@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import requests
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, redirect, request, send_from_directory
 
 from brief import artifact_basename, build_deck_prompt, build_intake_brief
 from ghl_client import GhlClient, GhlClientError
@@ -20,6 +20,25 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(name)s %(message)s",
 )
 log = logging.getLogger("inception-emails-site")
+
+# The repo root doubles as the static folder, so block everything that isn't a
+# public asset: source, config, tests, and locally written intake briefs.
+_PRIVATE_SUFFIXES = (".py", ".pyc", ".md", ".cfg", ".toml", ".ini", ".lock")
+_PRIVATE_NAMES = frozenset({"procfile", "requirements.txt", "requirements-dev.txt"})
+_PRIVATE_DIRS = ("briefs/", "tests/", "instance/", "__pycache__/")
+
+
+@app.before_request
+def block_private_files():
+    path = request.path.lstrip("/").lower()
+    name = path.rsplit("/", 1)[-1]
+    if (
+        any(part.startswith(".") for part in path.split("/") if part)
+        or name.endswith(_PRIVATE_SUFFIXES)
+        or name in _PRIVATE_NAMES
+        or path.startswith(_PRIVATE_DIRS)
+    ):
+        return ("Not found", 404)
 
 GHL_LOCATION_ID = "oPTc9Dv3gSsB3uQmYdBd"
 
@@ -83,46 +102,37 @@ def index():
     return send_from_directory(".", "index.html")
 
 
-@app.route("/msp.html")
+# The site is MSP-only. The old /msp page was folded into the homepage, and the
+# other industry pages were retired; 301 them all to / so old links, ads and
+# search results still land somewhere useful.
 @app.route("/msp")
-def msp():
-    return send_from_directory(".", "msp.html")
-
-
-@app.route("/functional-medicine.html")
+@app.route("/msp.html")
 @app.route("/functional-medicine")
-def functional_medicine():
-    return send_from_directory(".", "functional-medicine.html")
-
-
-@app.route("/property-maintenance.html")
+@app.route("/functional-medicine.html")
 @app.route("/property-maintenance")
-def property_maintenance():
-    return send_from_directory(".", "property-maintenance.html")
-
-
-@app.route("/dental.html")
+@app.route("/property-maintenance.html")
 @app.route("/dental")
-def dental():
-    return send_from_directory(".", "dental.html")
-
-
-@app.route("/life-insurance.html")
+@app.route("/dental.html")
 @app.route("/life-insurance")
-def life_insurance():
-    return send_from_directory(".", "life-insurance.html")
-
-
-@app.route("/mortgage.html")
+@app.route("/life-insurance.html")
 @app.route("/mortgage")
-def mortgage():
-    return send_from_directory(".", "mortgage.html")
+@app.route("/mortgage.html")
+def retired_pages():
+    return redirect("/", code=301)
+
+
+@app.route("/learn-more")
+@app.route("/learn-more.html")
+def learn_more():
+    return send_from_directory(".", "apply.html")
 
 
 @app.route("/apply")
 @app.route("/apply.html")
 def apply_form():
-    return send_from_directory(".", "apply.html")
+    # Renamed to /learn-more; keep /apply as a permanent redirect so old
+    # links, ads, and the prior canonical/sitemap entry don't break.
+    return redirect("/learn-more", code=301)
 
 
 @app.route("/about")

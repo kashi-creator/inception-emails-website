@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Inception Emails | AI-Powered Cold Email Outreach</title>
-    <meta name="description" content="Inception Emails delivers qualified B2B leads at $15-40 per lead through AI-powered cold email outreach. 50M+ emails delivered, 11% avg reply rate, 340% avg client ROI.">
+    <title>About Inception Emails | Why We Only Work With MSPs</title>
+    <meta name="description" content="Why Inception Emails works only with managed service providers, how we keep your primary domain and tenant out of outreach, and who we are.">
     <!-- BEGIN: SEO/AEO/GEO substrate (auto-managed) -->
     <link rel="canonical" href="https://inception-emails.com/about">
     <meta property="og:type" content="website">
@@ -13,10 +13,10 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@InceptionEmails">
-    <meta property="og:title" content="About Inception Emails | AI-Powered Cold Email Outreach">
-    <meta name="twitter:title" content="About Inception Emails | AI-Powered Cold Email Outreach">
-    <meta property="og:description" content="Inception Emails delivers qualified B2B leads at $15-40 per lead through AI-powered cold email outreach. 50M+ emails delivered, 11% avg reply rate, 340% avg client ROI.">
-    <meta name="twitter:description" content="Inception Emails delivers qualified B2B leads at $15-40 per lead through AI-powered cold email outreach. 50M+ emails delivered, 11% avg reply rate, 340% avg client ROI.">
+    <meta property="og:title" content="About Inception Emails | Why We Only Work With MSPs">
+    <meta name="twitter:title" content="About Inception Emails | Why We Only Work With MSPs">
+    <meta property="og:description" content="Why Inception Emails works only with managed service providers, how we keep your primary domain and tenant out of outreach, and who we are.">
+    <meta name="twitter:description" content="Why Inception Emails works only with managed service providers, how we keep your primary domain and tenant out of outreach, and who we are.">
     <meta property="og:image" content="https://inception-emails.com/static/og-default.png">
     <meta name="twitter:image" content="https://inception-emails.com/static/og-default.png">
     <script type="application/ld+json">
@@ -27,7 +27,7 @@
   "name": "Inception Emails",
   "url": "https://inception-emails.com",
   "logo": "https://inception-emails.com/static/logo.png",
-  "description": "AI-powered cold email outreach for B2B service businesses. 50M+ emails delivered, 11% average reply rate, 340% average client ROI, $15-40 per qualified lead.",
+  "description": "Done-for-you outbound email for US managed service providers (MSPs). We build and verify the prospect list, send from separate domains so the MSP's primary domain and Microsoft 365 tenant never send, handle replies, and book qualified meetings with decision-makers on the owner's calendar.",
   "founder": {
     "@type": "Person",
     "@id": "https://inception-emails.com/about#kashi"
@@ -41,11 +41,11 @@
   },
   "areaServed": "United States",
   "knowsAbout": [
-    "Cold Email Outreach",
-    "B2B Lead Generation",
-    "AI-Powered Email Marketing",
-    "Outbound Sales",
-    "Email Deliverability"
+    "Outbound email for managed service providers",
+    "MSP new client acquisition",
+    "Email deliverability",
+    "SPF, DKIM and DMARC",
+    "Sending domain warmup"
   ]
 }
     </script>
@@ -56,7 +56,7 @@
   "@id": "https://inception-emails.com/#website",
   "url": "https://inception-emails.com",
   "name": "Inception Emails",
-  "description": "AI-Powered Cold Email Outreach",
+  "description": "New logos for MSPs, without the owner becoming a salesperson.",
   "publisher": {
     "@id": "https://inception-emails.com/#organization"
   },
@@ -88,13 +88,11 @@
   "worksFor": {
     "@id": "https://inception-emails.com/#organization"
   },
-  "description": "Founder of Inception Emails. Operator-side expert in AI-powered cold email outreach with 50M+ emails delivered across MSP, dental, functional medicine, life insurance, mortgage, and property maintenance industries.",
+  "description": "Founder of Inception Emails, which runs done-for-you outbound email and meeting booking for US managed service providers (MSPs).",
   "knowsAbout": [
-    "Cold Email Outreach",
-    "B2B Lead Generation",
-    "AI-Powered Email Marketing",
-    "Outbound Sales Strategy",
-    "Email Deliverability"
+    "Outbound email for managed service providers",
+    "Email deliverability",
+    "SPF, DKIM and DMARC"
   ],
   "sameAs": []
 }
@@ -1318,24 +1316,45 @@
             margin-top: 0.5rem;
         }
     </style>
+    <style>
+        /* MSP rewrite additions */
+        .content-page .btn-gold {
+            display: inline-block;
+            padding: 0.9rem 1.6rem;
+            background: var(--gold);
+            color: var(--white);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 400;
+            margin: 0.4rem 0.8rem 0.4rem 0;
+        }
+        .content-page .btn-outline {
+            display: inline-block;
+            padding: 0.9rem 1.6rem;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 400;
+            margin: 0.4rem 0;
+        }
+        .content-page .pricing-card .term { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.8rem; }
+        .content-page .note { font-size: 0.85rem; color: var(--muted); }
+
+        /* MSP nav: five items need a tighter gap between tablet and laptop widths */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .nav-links { gap: 1.4rem; }
+        }
+    </style>
 </head>
 <body>
     <nav>
         <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
         <ul class="nav-links" id="navLinks">
-            <li class="nav-dropdown">
-                <a href="#" class="nav-dropdown-toggle" onclick="event.preventDefault(); this.parentElement.classList.toggle('open');">Industries</a>
-                <ul class="dropdown-menu">
-                    <li><a href="/msp.html" onclick="closeNav()">MSPs</a></li>
-                    <li><a href="/dental.html" onclick="closeNav()">Dental</a></li>
-                    <li><a href="/functional-medicine.html" onclick="closeNav()">Functional Medicine</a></li>
-                    <li><a href="/life-insurance.html" onclick="closeNav()">Life Insurance</a></li>
-                    <li><a href="/mortgage.html" onclick="closeNav()">Mortgage</a></li>
-                    <li><a href="/property-maintenance.html" onclick="closeNav()">Property Maintenance</a></li>
-                </ul>
-            </li>
-            <li><a href="/apply" onclick="closeNav()">Apply</a></li>
-            <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" class="nav-cta">Book a Call</a></li>
+            <li><a href="/pricing" onclick="closeNav()">How It Works &amp; Pricing</a></li>
+            <li><a href="/about" onclick="closeNav()">About</a></li>
+            <li><a href="/contact" onclick="closeNav()">Contact</a></li>
+            <li><a href="/learn-more" class="nav-cta" onclick="closeNav()">Free 50-Company List</a></li>
         </ul>
         <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -1344,53 +1363,52 @@
 
     <main class="content-page">
         <h1>About Inception Emails</h1>
-        <p class="subtitle">AI-powered cold email outreach built for B2B service businesses that are tired of overpaying for paid ads.</p>
+        <p class="subtitle">We do one thing: find new clients for MSPs, so the owner doesn't have to become a salesperson.</p>
 
-        <h2>What we do</h2>
-        <p>Inception Emails is a done-for-you cold email outreach service. We use AI to research prospects across firmographic, technographic, and behavioral dimensions, write each email individually (no templates, no mail merge), qualify replies, and book interested decision-makers directly onto your calendar.</p>
-        <p>Our clients are service businesses across six verticals: managed service providers (MSPs), dental practices, functional medicine clinics, life insurance agents, mortgage brokers, and property maintenance companies. Each vertical gets industry-tailored messaging and ICP targeting.</p>
+        <h2>Why MSPs</h2>
+        <p>Kashi's mom has spent years selling to MSPs, at ConnectWise and at CyberFox. That's how we got to know the business and the people who run it, and it's why we chose to work only with MSPs.</p>
+        <p class="note">To be clear: Inception Emails is not partnered with, or endorsed by, ConnectWise or CyberFox.</p>
+        <p>The owners we work best with run a 5&ndash;25 person shop, are still the only salesperson, and have watched referrals slow down. They'd rather be helping clients than prospecting, and they've had enough of vendors who hide their pricing.</p>
 
-        <h2>The numbers</h2>
-        <div class="stat-callout">
-            <div class="stat"><span class="number">50M+</span><span class="label">Emails delivered</span></div>
-            <div class="stat"><span class="number">11%</span><span class="label">Avg reply rate</span></div>
-            <div class="stat"><span class="number">340%</span><span class="label">Avg client ROI</span></div>
-            <div class="stat"><span class="number">$15–40</span><span class="label">Per qualified lead</span></div>
-        </div>
-
-        <h2>Why it works</h2>
-        <p>Most cold email fails because it is templated. Generic openers, copy-pasted value props, identical CTAs. Prospects can spot a template in two seconds and delete it.</p>
-        <p>Inception Emails uses AI to write each email individually based on the specific prospect's role, company, recent activity, and likely pain points. The result is a message that reads like a real human researched the prospect and wrote them specifically — because that is functionally what happened, just done at scale.</p>
-
-        <h2>How we are different from paid ads</h2>
+        <h2>How we protect your tenant</h2>
         <ul>
-            <li><strong>Cost.</strong> ~$60–160 to acquire a customer vs $600–1,200 on Google Ads, $320–800 on Meta — a 25% lead-to-customer close rate applied equally across channels.</li>
-            <li><strong>Intent depth.</strong> A reply to a personalized email signals deeper intent than a paid-ad click.</li>
-            <li><strong>Compounding.</strong> AI optimization compounds on real reply data over time. Paid ads do not.</li>
-            <li><strong>Predictability.</strong> Once a campaign is dialed in, monthly qualified-lead volume is predictable. Paid ads are subject to platform cost spikes and algorithm changes.</li>
+            <li><strong>Your primary domain never sends.</strong> All outreach goes out from separate domains set up only for outreach.</li>
+            <li><strong>SPF, DKIM and DMARC</strong> are set up and checked on every sending domain.</li>
+            <li><strong>Several weeks of warmup</strong> before any inbox reaches a prospect.</li>
+            <li><strong>About 20 emails per inbox per day</strong>, so no single inbox is pushed hard.</li>
         </ul>
 
-        <h2>About the team</h2>
-        <p id="kashi"><strong>Kashi Keefe</strong> is the founder of Inception Emails. He runs the strategy, the AI systems, and the methodology that powers every client campaign. Operator-side experience with 50M+ cold emails delivered across multiple industries. Reach him at <a href="/contact">/contact</a> or book a call below.</p>
+        <h2>How we work</h2>
+        <ul>
+            <li>We build and verify the list. You don't hand us a spreadsheet.</li>
+            <li>You approve every email before it goes out.</li>
+            <li>We handle replies and book meetings on your calendar.</li>
+            <li>You get a weekly reply log.</li>
+            <li>Month-to-month. If you leave, you keep the domains, lists and copy.</li>
+        </ul>
 
-        <p style="margin-top: 3rem;"><a href="/apply" style="display: inline-block; padding: 0.9rem 1.6rem; background: var(--gold); color: var(--white); border-radius: 8px; text-decoration: none; font-weight: 400;">Apply to work with us →</a></p>
+        <h2>Who we are</h2>
+        <p id="kashi"><strong>Kashi Keefe</strong> founded Inception Emails and runs every client's strategy, list building and sending setup himself. Reach him through the <a href="/contact">contact page</a> or book a call below.</p>
+
+        <p style="margin-top: 3rem;">
+            <a href="/learn-more" class="btn-gold">Get the 50 companies we'd target in your city &rarr;</a>
+            <a href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener" class="btn-outline">Book a call</a>
+        </p>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <a href="/" class="logo">INCEPTION <span>EMAILS</span></a>
-                <p>AI-Powered Cold Email Outreach</p>
+                <p>New logos for MSPs, without the selling</p>
             </div>
             <ul class="footer-links">
-                <li><a href="/msp.html">MSPs</a></li>
-                <li><a href="/dental.html">Dental</a></li>
-                <li><a href="/functional-medicine.html">Functional Medicine</a></li>
-                <li><a href="/life-insurance.html">Life Insurance</a></li>
-                <li><a href="/mortgage.html">Mortgage</a></li>
-                <li><a href="/property-maintenance.html">Property Maintenance</a></li>
-                <li><a href="/apply">Apply</a></li>
-                <li><a href="https://calendly.com/kashikeefe/30min" target="_blank">Book a Call</a></li>
+                <li><a href="/pricing">How It Works &amp; Pricing</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/learn-more">Free 50-Company List</a></li>
+                <li><a href="https://calendly.com/kashikeefe/30min" target="_blank" rel="noopener">Book a Call</a></li>
             </ul>
             <div class="footer-copy">&copy; 2026 Inception Emails. All rights reserved.</div>
         </div>

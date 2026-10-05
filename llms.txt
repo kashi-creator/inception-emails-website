@@ -1,36 +1,33 @@
 # Inception Emails
 
-> AI-powered cold email outreach for B2B service businesses. We deliver qualified decision-makers to your calendar at $15-40 per lead instead of the $80-300/lead from Google Ads or Meta. 50M+ emails delivered, 11% average reply rate, 340% average client ROI.
+> Done-for-you outbound email for US managed service providers (MSPs). New logos, without the owner becoming a salesperson: we find the MSP's ideal clients, email them from domains that aren't the MSP's, and book the meeting.
 
-We serve service businesses in six verticals with industry-tailored outbound campaigns: managed service providers (MSPs), dental practices, functional medicine clinics, life insurance agents, mortgage brokers, and property maintenance companies.
+Inception Emails works only with MSPs, typically 5-25 person shops where the owner is still the only salesperson.
 
 ## What Inception Emails does
 
-- AI-driven cold email outreach (no templates, no mail merge)
-- Firmographic + technographic + behavioral prospect targeting
-- Personalized outreach written individually per prospect
-- Qualified prospects booked directly onto the client's calendar
-- Continuous AI optimization of targeting, messaging, and timing
+- Builds and verifies a target list of companies that match the MSP's best clients (seat count, vertical, distance from the office)
+- Sends from separate domains and inboxes; the MSP's primary domain and Microsoft 365 tenant never send
+- Sets up SPF, DKIM and DMARC on every sending domain, warms inboxes for several weeks, caps sending at about 20 emails per inbox per day
+- Writes the emails; the MSP approves every email before it goes out
+- Handles replies and books qualified meetings with decision-makers on the MSP's calendar
+- Sends a weekly reply log
 
 ## Pricing
 
-- $15-40 per qualified lead (vs $150-300 Google Ads, $80-200 Meta)
-- 340% average client ROI
-- Custom monthly volume tiers — see /pricing
+- Scoped to the MSP's market and volume, quoted on the call
+- Month-to-month
+- If the MSP leaves, it keeps the domains, lists and copy
+- A founding MSP client rate is available for a limited number of early clients
 
-## Industries we serve
+## Free offer
 
-- [Managed Service Providers (MSPs)](https://inception-emails.com/msp): https://inception-emails.com/msp
-- [Dental Practices](https://inception-emails.com/dental): https://inception-emails.com/dental
-- [Functional Medicine Clinics](https://inception-emails.com/functional-medicine): https://inception-emails.com/functional-medicine
-- [Life Insurance Agents](https://inception-emails.com/life-insurance): https://inception-emails.com/life-insurance
-- [Mortgage Brokers](https://inception-emails.com/mortgage): https://inception-emails.com/mortgage
-- [Property Maintenance Companies](https://inception-emails.com/property-maintenance): https://inception-emails.com/property-maintenance
+- The 50 companies we'd target in your city: https://inception-emails.com/learn-more
 
 ## Key pages
 
 - [Homepage](https://inception-emails.com/): https://inception-emails.com/
-- [About](https://inception-emails.com/about): https://inception-emails.com/about
 - [Pricing](https://inception-emails.com/pricing): https://inception-emails.com/pricing
+- [About](https://inception-emails.com/about): https://inception-emails.com/about
 - [Contact](https://inception-emails.com/contact): https://inception-emails.com/contact
-- [Apply](https://inception-emails.com/apply): https://inception-emails.com/apply
+- [Get the 50 companies we'd target in your city](https://inception-emails.com/learn-more): https://inception-emails.com/learn-more
